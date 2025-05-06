@@ -34,11 +34,9 @@ Wanderlust Adventures is a web application designed to help users discover and b
     ```
 
 2.  **Install Node.js dependencies:**
-    Make sure you have Node.js and npm (or yarn) installed on your system.
+    Make sure you have Node.js and npm installed on your system.
     ```bash
     npm install
-    # or
-    yarn install
     ```
 
 3.  **Database Configuration:**
