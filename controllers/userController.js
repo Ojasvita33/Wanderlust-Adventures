@@ -15,7 +15,7 @@ exports.getProfile = async (req, res) => {
           res.render('profile', {
               title: 'Profile',
               user: req.session.user,
-              bookings: bookings // Pass all bookings
+              bookings: bookings 
           });
       } catch (err) {
           console.error('Error fetching all bookings:', err);

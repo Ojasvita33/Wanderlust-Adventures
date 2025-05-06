@@ -1,11 +1,10 @@
 exports.getContactPage = (req, res) => {
     res.render('contact', { title: 'Contact Us', message: req.session.message });
-    req.session.message = null; // Clear message after rendering
+    req.session.message = null; 
 };
 
 exports.handleContactFormSubmission = async (req, res) => {
     const { name, email, subject, message } = req.body;
 
-    // For this example, we'll send a JSON response indicating success
     res.status(200).json({ success: 'Thanks for reaching out. We\'ll get back to you soon.' });
 };
