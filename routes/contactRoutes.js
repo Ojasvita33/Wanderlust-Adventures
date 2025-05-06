@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const contactController = require('../controllers/contactController'); // Adjust path if needed
+const contactController = require('../controllers/contactController');
 
 router.get('/', contactController.getContactPage);
-router.post('/', contactController.handleContactFormSubmission); // Uncomment this line
-
+router.post('/', contactController.handleContactFormSubmission); 
 module.exports = router;
