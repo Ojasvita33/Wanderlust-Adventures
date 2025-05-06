@@ -2,28 +2,26 @@
 
 ## Overview
 
-Wanderlust Adventures is a web application designed to help users discover and book amazing travel experiences. Whether you're looking for a relaxing beach getaway or an adventurous mountain trek, Wanderlust Adventures provides a platform to explore various trips, view details, manage bookings, and connect with your travel profile.
+Wanderlust Adventures is a server-rendered travel booking web application built with Node.js and Express. It allows users to explore destinations, book trips, and manage travel plans—all through a dynamic, template-driven interface.
 
 ## Features
 
-* **Browse Trips:** Explore a curated list of exciting travel destinations and adventures.
-* **View Trip Details:** Get comprehensive information about each trip, including descriptions, itineraries, prices, and availability.
-* **User Authentication:** Secure user registration and login system to manage profiles and bookings.
-* **User Profiles:** View and manage personal information.
-* **Booking Management:** Users can view their current bookings and have the option to cancel them.
-* **Contact Us:** A dedicated page for users to get in touch with the Wanderlust Adventures team.
-* **Payment Confirmation:** A confirmation page to review booking details before finalizing payment (Note: Actual payment gateway integration is not included in this basic structure).
-* **Responsive Design:** The application is designed to be accessible and user-friendly across various devices.
+- 🧭 Browse curated travel packages and experiences
+- 👤 User registration, login, and authentication
+- 🛒 Trip booking and booking history
+- 📍 Destination pages with descriptions and media
+- 🛠 Admin interface for trip and booking management
 
-## Technologies Used
+## Tech Stack
 
-* **Backend:** Node.js with Express.js framework
-* **Templating Engine:** EJS (Embedded JavaScript templates)
-* **Styling:** CSS (with a custom css)
-* **Icons:** Font Awesome
-* **Image Handling:** Basic static image serving
-* **Session Management:** Express Session (for user authentication and temporary messages)
-* **(Likely) Database:** (The provided code snippets suggest a database like MongoDB or a similar NoSQL solution is intended, though specific database connection details are not fully present in the UI code.)
+- **Runtime:** Node.js
+- **Framework:** Express.js
+- **Templating Engine:** EJS (Embedded JavaScript Templates)
+- **Database:** MongoDB (via Mongoose)
+- **Authentication:** 
+  - Password hashing with `bcrypt`
+  - Session management via `express-session`
+- **Environment Configuration:** dotenv
 
 ## Setup Instructions
 
@@ -54,11 +52,3 @@ Wanderlust Adventures is a web application designed to help users discover and b
 ## Conclusion and Future Enhancements
 
 Wanderlust Adventures provides a foundational platform for users to explore and manage travel bookings. Built with Node.js, Express, and EJS, it offers essential features for a travel website. Future development could include enhancements such as:
-
-* Payment Gateway Integration
-* Search and Filtering
-* Reviews and Ratings
-* Image Uploads
-* Admin Dashboard
-* Email Notifications
-* User Roles
