@@ -38,7 +38,7 @@ exports.processBooking = async (req, res) => {
         });
 
         await newBooking.save();
-        res.redirect(`/users/profile`); 
+        res.redirect(`/users/profile`); // Redirect to profile after booking
     } catch (error) {
         console.error('Error creating booking:', error);
         res.status(500).send('Error creating booking.');

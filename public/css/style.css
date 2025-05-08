@@ -82,6 +82,7 @@ body {
     align-items: center;
     color: white;
     text-decoration: none;
+    font-size: 1.1em;
 }
 
 .logo-container img {
@@ -102,12 +103,13 @@ body {
 
 .nav-links li a {
     color: white;
+    font-size: 1.1em;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease; /* Smooth transition for color change */
 }
 
 .nav-links li a:hover {
-    color: #ffc107; 
+    color: #ffc107; /* Yellow color on hover */
 }
 /* Footer */
 .site-footer {
@@ -125,11 +127,11 @@ body {
 
 .social-icons img {
     height: 30px;
-    transition: transform 0.2s ease-in-out; 
+    transition: transform 0.2s ease-in-out; /* Add transition for smooth scaling */
 }
 
 .social-icons img:hover {
-    transform: scale(1.1); 
+    transform: scale(1.1); /* Slightly scale up on hover */
 }
 
 .copyright {
@@ -155,7 +157,7 @@ body {
     margin-right: auto;
 }
 
-.home-banner h2 { 
+.home-banner h2 { /* Changed selector to target h2 directly within .home-banner */
     font-size: 3.75rem;
     margin-bottom: 10px;
     font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -163,7 +165,7 @@ body {
     text-shadow: 2px 1.5px #333;
 }
 
-.home-banner p { 
+.home-banner p { /* Changed selector to target p directly within .home-banner */
     font-size: 1.3rem;
     color: rgb(255, 255, 255);
     margin-bottom: 25px;
@@ -171,7 +173,7 @@ body {
     text-shadow: 1px 1px #333;
 }
 
-.home-banner .explore-btn { 
+.home-banner .explore-btn { /* Kept the selector for the button */
     font-size: 1.3em;
     background-color: #ffc107;
     color: rgb(255, 255, 255);
@@ -204,20 +206,20 @@ body {
     border-radius: 8px;
     overflow: hidden;
     background-color: white;
-    display: flex; 
-    flex-direction: column; 
+    display: flex; /* Enable flexbox for content alignment */
+    flex-direction: column; /* Stack image, text, button vertically */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease-in-out; 
+    transition: transform 0.2s ease-in-out; /* Add transition for smooth scaling */
 }
 
 .trip-card:hover {
-    transform: scale(1.03); 
+    transform: scale(1.03); /* Slightly scale up the card on hover */
 }
 
 .trip-card img {
     width: 100%;
-    height: 200px; 
-    object-fit: cover; 
+    height: 200px; /* Consistent image height */
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
     display: block;
 }
 
@@ -231,7 +233,7 @@ body {
 .trip-card p {
     padding: 0 10px 10px;
     color: #666;
-    flex-grow: 1; 
+    flex-grow: 1; /* Allow the paragraph to take up remaining vertical space */
 }
 
 .view-trip-btn {
@@ -243,18 +245,18 @@ body {
     color: white;
     text-decoration: none;
     border-radius: 0 0 8px 8px;
-    box-sizing: border-box; 
-    transition: background-color 0.3s ease;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
 }
 
 .view-trip-btn:hover {
-    background-color: hsl(190, 78%, 30%); 
+    background-color: hsl(190, 78%, 30%); /* Change background color on hover */
 }
 
 .explore-banner {
     text-align: center;
     padding: 30px 20px;
-    background-color: #ffc107; 
+    background-color: #ffc107; /* Yellow banner */
     color: #333;
     border-radius: 8px;
     margin: 20px 40px;
@@ -314,7 +316,7 @@ body {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
     padding: 15px;
     width: 100%;
-    text-align: center; 
+    text-align: center; /* Center text in overlay */
 }
 
 .trip-details .image-overlay h2 {
@@ -344,7 +346,7 @@ body {
     margin-bottom: 10px;
     border-bottom: 2px solid #eee;
     padding-bottom: 5px;
-    color: hsl(190 80% 45%); 
+    color: hsl(190 80% 45%); /* Updated heading color */
 }
 
 .trip-details .itinerary-box ul,
@@ -356,70 +358,70 @@ body {
 .trip-details .itinerary-box li,
 .trip-details .trip-details-box li {
     margin-bottom: 5px;
-    color: #555; 
+    color: #555; /* Updated text color */
 }
 
 .trip-details .booking-info-box {
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.364);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.364); /* Subtle shadow */
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
+    align-items: center; /* Centers items horizontally */
+    justify-content: center; /* Centers items vertically */
     padding: 20px;
-    border: 1px solid #eee; 
-    border-radius: 8px; 
-    margin-bottom: 20px;
-    background-color: #fdfbf8; 
+    border: 1px solid #eee; /* Light gray border, similar to the second image */
+    border-radius: 8px; /* Rounded corners, similar to the second image */
+    margin-bottom: 20px; /* Adds space below the box */
+    background-color: #fdfbf8; /* Light background, similar to the second image */
   }
   
   .trip-details .booking-info-box .price {
-    color: hsl(190 80% 45%);
-    font-size: 1.5em; 
+    color: hsl(190 80% 45%); /* Blue color for the price, similar to the second image */
+    font-size: 1.5em; /* Slightly larger font size for the price */
     font-weight: bold;
-    text-align: center; 
-    margin-bottom: 5px; 
+    text-align: center; /* Centers the price text */
+    margin-bottom: 5px; /* Small space below the price */
   }
   
   .trip-details .booking-info-box .price span {
-    font-size: 2em; 
+    font-size: 2em; /* Larger font size for the numerical value */
   }
   
   .trip-details .booking-info-box h3 {
-    text-align: center; 
-    color: #555;
-    font-weight: normal;
-    margin-bottom: 15px;
+    text-align: center; /* Centers the "Ready for an adventure?" text */
+    color: #555; /* Darker gray color for the heading */
+    font-weight: normal; /* Not bold, similar to the second image */
+    margin-bottom: 15px; /* Space below the heading */
   }
   
   .trip-details .booking-info-box .button.book-now-btn {
-    background-color: hsl(40 90% 60%); 
-    color: black; 
-    padding: 12px 25px; 
+    background-color: hsl(40 90% 60%); /* Yellow background for the button */
+    color: black; /* Black text for the button */
+    padding: 12px 25px; /* Adjust padding for size */
     border: none;
-    border-radius: 5px; 
+    border-radius: 5px; /* Rounded corners for the button */
     cursor: pointer;
     font-size: 1em;
-    font-weight: bold;
-    transition: background-color 0.3s ease; 
+    font-weight: bold; /* Make the button text bold */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
   }
   
   .trip-details .booking-info-box .button.book-now-btn:hover {
-    background-color: hsl(40 80% 50%);
+    background-color: hsl(40 80% 50%); /* Slightly darker yellow on hover */
   }
   
   .trip-details .booking-info-box p.need-help {
-    text-align: center;
+    text-align: center; /* Centers the "Need help?" text */
     font-size: 0.9em;
     margin-top: 15px;
   }
   
   .trip-details .booking-info-box p.need-help a {
-    color: hsl(190 80% 45%); 
-    text-decoration: none;
+    color: hsl(190 80% 45%); /* Blue/teal color for the "Contact Us" link */
+    text-decoration: none; /* Remove underline *//* Make the link text bold */
   }
   
   .trip-details .booking-info-box p.need-help a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Add underline on hover */
   }
 
 .trip-details .trip-details-box ul {
@@ -429,12 +431,12 @@ body {
 
 .trip-details .trip-details-box li {
     margin-bottom: 8px;
-    color: #555; 
+    color: #555; /* Updated text color */
 }
 
 .trip-details .trip-details-box li strong {
     font-weight: bold;
-    color: #333; 
+    color: #333; /* Slightly darker for emphasis */
 }
 
 /* Payment Page
@@ -495,9 +497,9 @@ body {
 }
 
 .auth-header {
-    display: inline-block;
+    display: inline-block; /* To contain the links */
     margin-bottom: 10px;
-    border-bottom: 2px solid #eee; 
+    border-bottom: 2px solid #eee; /* Separator line */
     padding-bottom: 5px;
 }
 
@@ -519,7 +521,7 @@ body {
 
 .auth-form {
     margin-top: 20px;
-    text-align: left; 
+    text-align: left; /* Align form elements to the left */
 }
 
 .auth-form .form-group {
@@ -542,12 +544,12 @@ body {
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 1em;
-    color: #333; 
+    color: #333; /* Default input text color */
 }
 
 /* Style for placeholders */
 .auth-form input::placeholder {
-    color: #999; 
+    color: #999; /* Light gray placeholder text */
     font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 .auth-button {
@@ -626,7 +628,7 @@ body {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
     gap: 30px;
 }
 
@@ -663,7 +665,7 @@ body {
 
 .contact-form input[type="text"],
 .contact-form input[type="email"],
-.contact-form input[type="text"], 
+.contact-form input[type="text"], /* Subject uses text input */
 .contact-form textarea {
     width: 100%;
     padding: 10px;

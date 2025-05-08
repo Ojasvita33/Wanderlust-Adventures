@@ -10,7 +10,7 @@
     <%- include('partials/header') %>
 
 <div class="container">
-    <h1>Explore Our Adventures</h1>
+    <h1 style="color: hsl(190 80% 45%)">Explore Our Adventures</h1>
     <% if (trips && trips.length > 0) { %>
         <div class="trips-grid">
             <% trips.forEach(trip => { %>
@@ -29,5 +29,6 @@
         <p>No adventures available yet. Stay tuned!</p>
     <% } %>
 </div>
+
 <%- include('partials/footer') %> </body>
 </html>

@@ -7,7 +7,7 @@ const tripSchema = new mongoose.Schema({
     date: { type: Date, required: true },
     itinerary: { type: [String] },
     details: { type: Object },
-    image: { type: String } 
+    image: { type: String } // New field to store image path or URL
 });
 
 module.exports = mongoose.model('Trip', tripSchema);
