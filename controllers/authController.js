@@ -5,7 +5,7 @@ const { validationResult } = require('express-validator');
 // Render Signup Page
 exports.getSignup = (req, res) => {
     res.render('signup', { title: 'Sign Up', messages: req.session.messages });
-    req.session.messages = {}; 
+    req.session.messages = {}; // Clear messages after rendering
 };
 
 // Handle Signup Submission
@@ -27,7 +27,7 @@ exports.postSignup = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = new User({ name, username, email, password: hashedPassword });
         await user.save();
-        req.session.messages = { success: 'Signup successful! Please log in.' };
+        req.session.messages = { success: 'Signup successful! Please log in.' }; // Flash message
         res.redirect('/auth/login');
     } catch (err) {
         console.error('Signup error:', err);
@@ -44,8 +44,8 @@ exports.setRedirect = (req, res) => {
 // Handle Login Submission
 exports.postLogin = async (req, res) => {
     const { username, password } = req.body;
-    const redirectTo = req.session.redirectTo; 
-    delete req.session.redirectTo;
+    const redirectTo = req.session.redirectTo; // Get redirectTo from session
+    delete req.session.redirectTo; // Clear it from the session
 
     try {
         const user = await User.findOne({ username });
@@ -70,7 +70,7 @@ exports.postLogin = async (req, res) => {
 
 // Render Login Page
 exports.getLogin = (req, res) => {
-    res.render('login', { title: 'Login', messages: res.locals.messages, req: req }); 
+    res.render('login', { title: 'Login', messages: res.locals.messages, req: req }); // Pass the req object
 };
 
 // Handle Logout
@@ -80,6 +80,6 @@ exports.getLogout = (req, res) => {
             console.error(err);
             return res.redirect('/');
         }
-        res.redirect('/'); 
+        res.redirect('/'); // Redirect to homepage after logout
     });
 };

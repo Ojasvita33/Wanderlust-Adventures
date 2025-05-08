@@ -22,7 +22,7 @@ exports.getTripDetails = async (req, res) => {
             title: trip.name,
             trip: trip,
             user: req.session.user,
-            currentUrl: req.originalUrl 
+            currentUrl: req.originalUrl // Pass the current URL to the template
         });
     } catch (error) {
         console.error(error);
