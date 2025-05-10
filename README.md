@@ -1,54 +1,81 @@
 # Wanderlust Adventures - Your Gateway to Exciting Journeys
 
+[Live Demo 🚀](https://wanderlust-adventures-n9wo.onrender.com/)
+
 ## Overview
 
-Wanderlust Adventures is a server-rendered travel booking web application built with Node.js and Express. It allows users to explore destinations, book trips, and manage travel plans—all through a dynamic, template-driven interface.
+Wanderlust Adventures is a **Node.js + Express** travel booking web application designed to help users discover exciting destinations, book trips, and manage their itineraries—all through a clean, template-driven interface powered by EJS.
 
-## Features
+---
 
-- 🧭 Browse curated travel packages and experiences
-- 👤 User registration, login, and authentication
-- 🛒 Trip booking and booking history
-- 📍 Destination pages with descriptions and media
-- 🛠 Admin interface for trip and booking management
+## ✨ Features
 
-## Tech Stack
+- 🧭 Browse curated travel packages and destination experiences  
+- 👤 User registration, login, and session-based authentication  
+- 🛒 Trip booking functionality with booking history  
+- 📍 Destination pages with descriptions and images  
+- 🛠 Admin interface for managing trips and bookings  
 
-- **Runtime:** Node.js
-- **Framework:** Express.js
-- **Templating Engine:** EJS (Embedded JavaScript Templates)
-- **Database:** MongoDB (via Mongoose)
-- **Authentication:** 
-  - Password hashing with `bcrypt`
-  - Session management via `express-session`
-- **Environment Configuration:** dotenv
+---
 
-## Setup Instructions
+## 🛠 Tech Stack
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [repository-url]
-    cd wanderlust-adventures
-    ```
+| Category         | Technology                  |
+|------------------|------------------------------|
+| **Runtime**      | Node.js                      |
+| **Framework**    | Express.js                   |
+| **Templating**   | EJS (Embedded JavaScript)    |
+| **Database**     | MongoDB (via Mongoose)       |
+| **Auth**         | bcrypt for password hashing  |
+|                  | express-session for sessions |
+| **Config**       | dotenv for environment vars  |
 
-2.  **Install Node.js dependencies:**
-    Make sure you have Node.js and npm installed on your system.
-    ```bash
-    npm install
-    ```
+---
 
-3.  **Database Configuration:**
-    This project likely requires a database (e.g., MongoDB). You'll need to set up your database and configure the connection details within your `index.js` or a separate configuration file. Look for database connection related code and update it accordingly.
+## ⚙️ Setup Instructions
 
-4.  **Environment Variables (Optional):**
-    You might need to set up environment variables for sensitive information like database URIs, session secrets, etc. Create a `.env` file in the project root and define your variables. You'll need to install and configure a package like `dotenv` to load these variables.
+### 1. Clone the repository:
+```bash
+git clone [repository-url]
+cd wanderlust-adventures
+```
 
-5.  **Running the Application:**
-    ```bash
-    npm start
-    ```
-    This command should start the Node.js server. You can then access the application in your web browser, usually at `http://localhost:3000`.
+### 2. Install dependencies:
+```bash
+npm install
+```
 
-## Conclusion and Future Enhancements
+### 3. Configure environment variables:
 
-Wanderlust Adventures provides a foundational platform for users to explore and manage travel bookings. Built with Node.js, Express, and EJS, it offers essential features for a travel website. Future development could include enhancements such as:
+Create a `.env` file in the root directory:
+```env
+PORT=3000
+MONGODB_URI=your_mongodb_uri
+SESSION_SECRET=your_secret_key
+```
+
+### 4. Run the application:
+```bash
+npm start
+```
+
+Visit the app at: [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🚀 Live Deployment
+
+The application is hosted on Render:  
+🔗 [https://wanderlust-adventures-n9wo.onrender.com](https://wanderlust-adventures-n9wo.onrender.com)
+
+---
+
+## 🔮 Future Enhancements
+
+- 🌐 Integration with third-party travel APIs (e.g., for flights, hotels)
+- 📊 Admin dashboard with real-time analytics
+- 💳 Payment gateway integration for online booking
+- 🌍 Multilingual and multi-currency support
+- 🧠 AI-based trip recommendations
+
+---
