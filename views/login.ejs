@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+    <div class="auth-container">
+        <div class="auth-header">
+            <h2>Welcome Back!</h2>
+            <p>Log in to manage your adventures. </p>
+        </div>
+        <form action="/auth/login" method="POST" class="auth-form">
+            <input type="hidden" name="redirectTo" value="<%= req.query.redirectTo %>">
+            <% if (messages && messages.error) { %>
+                <p class="error-message"><%= messages.error %></p>
+            <% } %>
+            <% if (messages && messages.success) { %>
+                <p class="success-message"><%= messages.success %></p>
+            <% } %>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Your Username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+            </div>
+            <button type="submit" class="auth-button">LOG IN</button>
+            <p class="form-link" style="text-align: center;">Don't have an account? <a href="/auth/signup" style="color: hsl(190 80% 45%);text-decoration: none;">Signup</a></p>
+        </form>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+
+</html>

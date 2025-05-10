@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+<div class="home-banner">
+    <h2>Your Next Adventure Awaits</h2>
+    <p>Discover breathtaking destinations and create unforgettable memories with Wanderlust Adventures.</p>
+    <a href="/trips" class="explore-btn">Explore Trips</a>
+</div>
+
+<div class="container featured-adventures">
+    <h2>Featured Trips</h2>
+    <% if (featuredTrips && featuredTrips.length > 0) { %>
+        <div class="trips-grid">
+            <% featuredTrips.forEach(trip => { %>
+                <div class="trip-card">
+                    <% if (trip.image) { %>
+                        <img src="<%= trip.image %>" alt="<%= trip.name %>">
+                    <% } %>
+                    <h3><%= trip.name %></h3>
+                    <p><%= trip.description.substring(0, 100) %></p>
+                    <a href="/trips/<%= trip._id %>" class="view-trip-btn">View Details</a>
+                </div>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <p>Check back soon for featured adventures!</p>
+    <% } %>
+</div>
+
+<div class="explore-banner">
+    <h2>Ready to Explore?</h2>
+    <p>Let us help you plan your dream vacation. Browse our curated trips or contact us for a custom itinerary.</p>
+    <div class="banner-buttons">
+        <a href="/trips">View All Trips</a>
+        <a href="/contact">Contact Us</a>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
+</body>
+
+</html>
