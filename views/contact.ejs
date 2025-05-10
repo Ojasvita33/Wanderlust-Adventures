@@ -7,26 +7,25 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* Style for the success pop-up */
         #success-popup {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: white; /* White background */
-            color: #333; /* Dark text color */
+            background-color: white; 
+            color: #333; 
             padding: 15px 20px;
-            border-radius: 8px; /* Slightly more rounded corners */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+            border-radius: 8px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
-            z-index: 1000; /* Ensure it's on top */
-            width: 300px; /* Adjust width as needed */
-            box-sizing: border-box; /* Include padding in width */
+            z-index: 1000; 
+            width: 300px; 
+            box-sizing: border-box; 
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Align text to the left */
-            gap: 8px; /* Spacing between title and message */
+            align-items: flex-start; 
+            gap: 8px; 
         }
 
         #success-popup.show {
@@ -36,8 +35,8 @@
         }
 
         #success-popup h3 {
-            margin-top: 0; /* Remove default top margin for the heading */
-            font-size: 1em; /* Adjust heading size */
+            margin-top: 0; 
+            font-size: 1em; 
             font-weight: bold;
             margin-bottom: 2px;
         }
