@@ -19,7 +19,7 @@ exports.getTripDetails = async (req, res) => {
         if (!trip) {
             return res.status(404).render('404', { title: 'Trip Not Found' });
         }
-        res.render('tripDetails', {
+        res.render('tripdetails', {
             title: trip.name,
             trip: trip,
             user: req.session.user,
