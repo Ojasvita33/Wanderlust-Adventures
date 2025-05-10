@@ -5,7 +5,5 @@ exports.getContactPage = (req, res) => {
 
 exports.handleContactFormSubmission = async (req, res) => {
     const { name, email, subject, message } = req.body;
-
-    // For this example, we'll send a JSON response indicating success
     res.status(200).json({ success: 'Thanks for reaching out. We\'ll get back to you soon.' });
 };
