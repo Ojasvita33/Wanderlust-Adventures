@@ -19,8 +19,7 @@
                         <img src="<%= trip.image %>" alt="<%= trip.name %>">
                     <% } %>
                     <h3><%= trip.name %></h3>
-                    <p class="price">From $<%= trip.price %></p>
-                    <p><%= trip.description.substring(0, 100) %>...</p>
+                    <p><%= trip.description.substring(0, 100) %></p>
                     <a href="/trips/<%= trip._id %>" class="view-trip-btn">View Details</a>
                 </div>
             <% }); %>
