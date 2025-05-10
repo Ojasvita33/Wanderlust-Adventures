@@ -1,85 +1,51 @@
 const User = require('../models/User');
-const bcrypt = require('bcryptjs');
-const { validationResult } = require('express-validator');
+const Booking = require('../models/Bookings');
 
-// Render Signup Page
-exports.getSignup = (req, res) => {
-    res.render('signup', { title: 'Sign Up', messages: req.session.messages });
-    req.session.messages = {}; // Clear messages after rendering
+// Render User Profile (Protected Route)
+exports.getProfile = async (req, res) => {
+  if (req.session.user) {
+      try {
+          // Fetch all bookings for the logged-in user, sorted by bookingDate in descending order
+          const bookings = await Booking.find({ user: req.session.user._id })
+              .sort({ bookingDate: -1 })
+              .populate('trip');
+
+          res.render('profile', {
+              title: 'Profile',
+              user: req.session.user,
+              bookings: bookings // Pass all bookings
+          });
+      } catch (err) {
+          console.error('Error fetching all bookings:', err);
+          res.status(500).send('Error fetching bookings.');
+      }
+  } else {
+      res.redirect('/auth/login');
+  }
 };
 
-// Handle Signup Submission
-exports.postSignup = async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        req.session.messages = { error: 'Validation failed. Please check the form.' };
-        return res.redirect('/auth/signup');
-    }
-
-    const { name, username, email, password } = req.body;
+// Fetch All Users (Admin Feature - Optional)
+exports.getAllUsers = async (req, res) => {
     try {
-        const existingUser = await User.findOne({ $or: [{ username }, { email }] });
-        if (existingUser) {
-            req.session.messages = { error: 'Username or email already exists.' };
-            return res.redirect('/auth/signup');
-        }
-
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const user = new User({ name, username, email, password: hashedPassword });
-        await user.save();
-        req.session.messages = { success: 'Signup successful! Please log in.' }; // Flash message
-        res.redirect('/auth/login');
+        const users = await User.find();
+        res.status(200).json(users);
     } catch (err) {
-        console.error('Signup error:', err);
-        req.session.messages = { error: 'Error creating account.' };
-        res.redirect('/auth/signup');
+        console.error(err);
+        res.status(500).json({ message: 'Error fetching users', error: err.message });
     }
 };
 
-exports.setRedirect = (req, res) => {
-    req.session.redirectTo = req.query.redirectTo;
-    res.redirect('/auth/login');
-};
-
-// Handle Login Submission
-exports.postLogin = async (req, res) => {
-    const { username, password } = req.body;
-    const redirectTo = req.session.redirectTo; // Get redirectTo from session
-    delete req.session.redirectTo; // Clear it from the session
-
+// Fetch a User by ID (Admin Feature - Optional)
+exports.getUserById = async (req, res) => {
+    const userId = req.params.id;
     try {
-        const user = await User.findOne({ username });
-        if (!user || !(await bcrypt.compare(password, user.password))) {
-            req.session.messages = { error: 'Invalid username or password.' };
-            return res.redirect('/auth/login');
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
         }
-        req.session.user = user;
-        req.session.userId = user._id;
-
-        if (redirectTo) {
-            return res.redirect(redirectTo);
-        } else {
-            return res.redirect('/');
-        }
+        res.status(200).json(user);
     } catch (err) {
-        console.error('Login error:', err);
-        req.session.messages = { error: 'Error during login.' };
-        res.redirect('/auth/login');
+        console.error(err);
+        res.status(500).json({ message: 'Error fetching user', error: err.message });
     }
-};
-
-// Render Login Page
-exports.getLogin = (req, res) => {
-    res.render('login', { title: 'Login', messages: res.locals.messages, req: req }); // Pass the req object
-};
-
-// Handle Logout
-exports.getLogout = (req, res) => {
-    req.session.destroy(err => {
-        if (err) {
-            console.error(err);
-            return res.redirect('/');
-        }
-        res.redirect('/'); // Redirect to homepage after logout
-    });
 };
