@@ -14,12 +14,9 @@ exports.getAllTrips = async (req, res) => {
 // Fetch trip by ID
 exports.getTripDetails = async (req, res) => {
     const tripId = req.params.id;
-    console.log('Fetching trip details for ID:', tripId);
     try {
         const trip = await Trip.findById(tripId);
-        console.log('Trip found:', trip);
         if (!trip) {
-            console.log('Trip not found for ID:', tripId);
             return res.status(404).render('404', { title: 'Trip Not Found' });
         }
         res.render('tripDetails', {
@@ -28,9 +25,7 @@ exports.getTripDetails = async (req, res) => {
             user: req.session.user,
             currentUrl: req.originalUrl
         });
-        console.log('Trip details rendered successfully');
     } catch (error) {
-        console.error('Error fetching trip details:', error);
         res.status(500).send('Error fetching trip details');
     }
 };

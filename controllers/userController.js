@@ -10,8 +10,6 @@ exports.getProfile = async (req, res) => {
               .sort({ bookingDate: -1 })
               .populate('trip');
 
-          // console.log("All Bookings in getProfile:", JSON.stringify(bookings, null, 2));
-
           res.render('profile', {
               title: 'Profile',
               user: req.session.user,
