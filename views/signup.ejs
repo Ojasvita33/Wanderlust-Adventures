@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
     <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .popup-message {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f44336; 
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,6 +54,10 @@
             <p class="form-link" style="text-align: center;">Already have an account? <a href="/auth/login" style="color: hsl(190 80% 45%);text-decoration: none;">Login</a></p>
         </form>
     </div>
+
+    <% if (locals.popupMessage) { %>
+        <div class="popup-message"><%= locals.popupMessage %></div>
+    <% } %>
 
     <%- include('partials/footer') %>
 </body>
