@@ -1,12 +1,11 @@
 /* Base Styles */
 body {
-    font-family: sans-serif;
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
-    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .container {
@@ -18,65 +17,19 @@ body {
     box-shadow: 0.5 1 10px rgba(0, 0, 0, 0.1);
 }
 
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 15px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.button:hover {
-    background-color: #0056b3;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="password"],
-.form-group input[type="date"],
-.form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.error-message {
-    color: red;
-    margin-bottom: 10px;
-}
-
-.success-message {
-    color: green;
-    margin-bottom: 10px;
-}
-
-/* Header */
+/* Navbar */
 .main-nav {
-    background: linear-gradient(to right, hsl(190, 77%, 33%), #14b8a6); 
+    background: linear-gradient(to right, hsl(190, 77%, 33%), #14b8a6);
     color: white;
-    padding: 12px 40px;
+    padding: 12px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 100;
 }
 
+/* Logo */
 .logo-container a {
     display: flex;
     align-items: center;
@@ -86,357 +39,156 @@ body {
 }
 
 .logo-container img {
-    height: 45px;
+    height: 35px;
     margin-right: 10px;
 }
 
+/* Navbar Links */
 .nav-links {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
 }
 
 .nav-links li {
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 .nav-links li a {
     color: white;
-    font-size: 1.1em;
+    font-size: 1em;
     text-decoration: none;
-    transition: color 0.3s ease; 
+    transition: color 0.3s ease;
 }
 
 .nav-links li a:hover {
     color: #ffc107;
 }
+
+/* Hamburger Icon */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 101;
+    transition: all 0.3s ease;
+}
+
+.hamburger .line {
+    height: 3px;
+    background-color: white;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animate hamburger into "X" when nav is active */
+.hamburger.active .line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Responsive - Mobile Menu */
+@media (max-width: 768px) {
+    .main-nav {
+        padding: 10px 15px;
+    }
+
+    /* Nav Links - Mobile */
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(to right, hsl(190, 77%, 33%), #14b8a6);
+        border-radius: 0 0 8px 8px;
+        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transform: translateX(100%); /* Initially off-screen */
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li a {
+        padding: 12px;
+        display: block;
+        color: white !important;
+        font-size: 1.1em;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+        color: yellow !important;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Show the menu when active */
+    .nav-links.active {
+        transform: translateX(0); /* Slide in from the right */
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Prevent sidebar from overflowing */
+    body {
+        overflow-x: hidden;
+    }
+}
+
 /* Footer */
 .site-footer {
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     text-align: center;
-    padding: 20px;
+    padding: 15px;
     margin-top: 30px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
 .social-icons a {
     display: inline-block;
-    margin: 0 10px;
+    margin: 0 8px;
 }
 
 .social-icons img {
-    height: 30px;
-    transition: transform 0.2s ease-in-out; 
+    height: 25px;
+    transition: transform 0.2s ease-in-out;
 }
 
 .social-icons img:hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
 
 .copyright {
     margin-top: 10px;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
-/* Home Page */
-.home-banner {
-    background-image: url('/images/homebanner.webp'); 
-    background-size: cover; 
-    background-position: center;
-    color: #ffffff;
-    padding: 80px 20px;
-    text-align: center;
-    margin-bottom: 20px;
-    margin-top: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    height: 400px; 
-    width: 85%; 
-    margin-left: auto; 
-    margin-right: auto;
-}
-
-.home-banner h2 { 
-    font-size: 3.75rem;
-    margin-bottom: 10px;
-    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-weight: 800;
-    text-shadow: 2px 1.5px #333;
-}
-
-.home-banner p { 
-    font-size: 1.3rem;
-    color: rgb(255, 255, 255);
-    margin-bottom: 25px;
-    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    text-shadow: 1px 1px #333;
-}
-
-.home-banner .explore-btn {
-    font-size: 1.3em;
-    background-color: #ffc107;
-    color: rgb(255, 255, 255);
-    padding: 12px 25px;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.home-banner .explore-btn:hover {
-    background-color: #fab132;
-}
-
-.featured-adventures h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.875rem;
-    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-weight: 700;
-    color:hsl(190 80% 45%);
-}
-
-.trips-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.trip-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: white;
-    display: flex; 
-    flex-direction: column; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease-in-out; 
-}
-
-.trip-card:hover {
-    transform: scale(1.03); 
-}
-
-.trip-card img {
-    width: 100%;
-    height: 200px; 
-    object-fit: cover; 
-    display: block;
-}
-
-.trip-card h3 {
-    padding: 10px;
-    margin: 0;
-    font-size: 1.2em;
-    color:hsl(190 80% 45%);
-}
-
-.trip-card p {
-    padding: 0 10px 10px;
-    color: #666;
-    flex-grow: 1; 
-}
-
-.view-trip-btn {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    background-color:hsl(190 80% 45%);
-    color: white;
-    text-decoration: none;
-    border-radius: 0 0 8px 8px;
-    box-sizing: border-box; 
-    transition: background-color 0.3s ease; 
-}
-
-.view-trip-btn:hover {
-    background-color: hsl(190, 78%, 30%); 
-}
-
-.explore-banner {
-    text-align: center;
-    padding: 30px 20px;
-    background-color: #ffc107; 
-    border-radius: 8px;
-    margin: 20px 40px;
-}
-
-.explore-banner h2 {
-    margin-bottom: 2px;
-    font-size: 1.875rem;
-    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
-.explore-banner p{
-    margin-top: 1px;
-}
-
-.banner-buttons a {
-    margin: 0 8px;
-    font-size: 1em;
-    text-decoration: none;
-    color: #ffffff;
-    background-color: hsl(190 80% 45%);
-    padding: 10px 20px;
-    border-radius: 5px;
-}
-
-.banner-buttons a:hover {
-    background-color: #f8f9fa;
-    color: hsl(190 80% 45%);
-}
-
-/* Trip Details Page - Updated */
-.trip-details {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
-
-.trip-details .image-container {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
-.trip-details .image-container img {
-    width: 100%;
-    max-height: 500px;
-    object-fit: cover;
-    display: block;
-}
-
-.trip-details .image-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    color: white;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-    padding: 15px;
-    width: 100%;
-    text-align: center; 
-}
-
-.trip-details .image-overlay h2 {
-    margin-bottom: 5px;
-    font-size: 3rem;
-    font-weight: 800;
-    color: hsl(40 90% 60%);
-    text-shadow: 2px 2px #333;
-}
-
-.trip-details .image-overlay p {
-    font-size: 1em;
-    color: white;
-    text-shadow: 1px 1px #333;
-}
-
-.trip-details .details-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px;
-    align-items: start;
-}
-
-.trip-details .itinerary-box h2,
-.trip-details .trip-details-box h2 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 5px;
-    color: hsl(190 80% 45%); 
-}
-.trip-details .itinerary-box ul,
-.trip-details .trip-details-box ul {
-    list-style: disc;
-    padding-left: 20px;
-}
-
-.trip-details .itinerary-box li,
-.trip-details .trip-details-box li {
-    margin-bottom: 5px;
-    color: #555; 
-}
-
-.trip-details .booking-info-box {
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.364); 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
-    padding: 20px;
-    border: 1px solid #eee; 
-    border-radius: 8px; 
-    margin-bottom: 20px; 
-    background-color: #fdfbf8; 
-  }
-  
-  .trip-details .booking-info-box .price {
-    color: hsl(190 80% 45%); 
-    font-size: 1.5em; 
-    font-weight: bold;
-    text-align: center; 
-    margin-bottom: 5px; 
-  }
-  
-  .trip-details .booking-info-box .price span {
-    font-size: 2em; 
-  }
-  .trip-details .booking-info-box h3 {
-    text-align: center; 
-    color: #555; 
-    font-weight: normal; 
-    margin-bottom: 15px; 
-  }
-  
-  .trip-details .booking-info-box .button.book-now-btn {
-    background-color: hsl(40 90% 60%); 
-    color: black; 
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px; 
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: bold; 
-    transition: background-color 0.3s ease; 
-  }
-  
-  .trip-details .booking-info-box .button.book-now-btn:hover {
-    background-color: hsl(40 80% 50%); 
-  }
-  
-  .trip-details .booking-info-box p.need-help {
-    text-align: center; 
-    font-size: 0.9em;
-    margin-top: 15px;
-  }
-  
-  .trip-details .booking-info-box p.need-help a {
-    color: hsl(190 80% 45%); 
-    text-decoration: none; 
-  }
-  
-  .trip-details .booking-info-box p.need-help a:hover {
-    text-decoration: underline;
-  }
-
-.trip-details .trip-details-box ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.trip-details .trip-details-box li {
-    margin-bottom: 8px;
-    color: #555; 
-}
-
-.trip-details .trip-details-box li strong {
-    font-weight: bold;
-    color: #333; 
-}
-
-/* Auth Pages (Login/Signup) */
+/* Auth Pages */
 .auth-container {
     max-width: 400px;
     margin: 50px auto;
@@ -448,23 +200,19 @@ body {
 }
 
 .auth-header {
-    display: inline-block; 
+    display: inline-block;
     margin-bottom: 10px;
     border-bottom: 2px solid #eee;
     padding-bottom: 5px;
 }
 
 .auth-header h2 {
-    display: inline-block;
-    text-decoration: none;
     color: hsl(190 80% 45%);
     font-weight: bold;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .auth-header p {
-    display: inline-block;
-    text-decoration: none;
     color: #555;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -472,7 +220,7 @@ body {
 
 .auth-form {
     margin-top: 20px;
-    text-align: left; 
+    text-align: left;
 }
 
 .auth-form .form-group {
@@ -493,16 +241,14 @@ body {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
     font-size: 1em;
-    color: #333; 
+    color: #333;
 }
 
-/* Style for placeholders */
 .auth-form input::placeholder {
     color: #999;
-    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
 .auth-button {
     width: 100%;
     padding: 14px;
@@ -510,9 +256,9 @@ body {
     color: white;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
     font-size: 1.1em;
     margin-top: 25px;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
@@ -530,130 +276,4 @@ body {
     color: green;
     margin-bottom: 15px;
     text-align: center;
-}
-/* Contact Page */
-.contact-page {
-    padding: 30px 20px;
-}
-
-.contact-page h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.25rem;
-    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-weight: 700;
-    color: hsl(190 80% 45%);
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 30px;
-}
-
-/* Left Side - Send Us a Message */
-.contact-form {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
-
-.contact-form h2 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    color: hsl(190 80% 45%);
-}
-
-.contact-form p {
-    color: #666;
-    margin-bottom: 20px;
-}
-
-.contact-form .form-group {
-    margin-bottom: 15px;
-}
-
-.contact-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
-}
-
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form input[type="text"], 
-.contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 1em;
-}
-
-.contact-form textarea {
-    min-height: 100px;
-}
-
-.contact-form .button {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    font-size: 1.1em;
-    background-color: hsl(190 80% 45%);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 15px;
-}
-
-.contact-form .button:hover {
-    background-color: #14b8a6;
-}
-
-/* Right Side - Contact Information */
-.contact-info {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
-
-.contact-info h2 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    color: hsl(190 80% 45%);
-}
-
-.contact-info p {
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.contact-info .info-item {
-    margin-bottom: 15px;
-    color: hsl(190 80% 45%);
-}
-
-.contact-info strong {
-    display: block;
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 5px;
-}
-
-.contact-info a {
-    color: hsl(190 80% 45%);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.contact-info a:hover {
-    color: #14b8a6;
 }
