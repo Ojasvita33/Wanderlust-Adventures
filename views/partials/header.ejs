@@ -1,40 +1,32 @@
-<nav class="main-nav">
-    <div class="logo-container">
-        <a href="/">
-            <img src="/images/logo.png" alt="Wanderlust Adventures Logo">
-            <span>WANDERLUST ADVENTURES</span>
-        </a>
-    </div>
-    <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/trips">Trips</a></li>
-        <li><a href="/contact">Contact Us</a></li>
-        <% if (!user) { %>
-            <li><a href="/auth/login">Login</a></li>
-            <li><a href="/auth/signup">Sign Up</a></li>
-            <% } else { %>
-                <li><a href="/users/profile">Profile</a></li>
-                <li><a href="/auth/logout">Logout</a></li>
-                <% } %>
-    </ul>
-    <div class="hamburger">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-    </div>
+<nav class="main-nav"> 
+    <div class="logo-container">
+        <a href="/">
+            <img src="/images/logo.png" alt="Wanderlust Adventures Logo">
+            <span>WANDERLUST ADVENTURES</span>
+        </a>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/trips">Trips</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        <% if (!user) { %>
+            <li><a href="/auth/login">Login</a></li>
+            <li><a href="/auth/signup">Sign Up</a></li>
+        <% } else { %>
+            <li><a href="/users/profile">Profile</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+        <% } %>
+    </ul>
+
+    <!-- Dark Mode Toggle Button -->
+    <button id="theme-toggle" style="margin-left: 10px; background: none; border: none; font-size: 20px; cursor: pointer;">
+        🌓
+    </button>
+
+    <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
 </nav>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-
-        if (hamburger && navLinks) {
-            hamburger.addEventListener('click', function () {
-                navLinks.classList.toggle('active'); // This toggles the visibility of the menu
-                hamburger.classList.toggle('active'); // This animates the hamburger into an "X"
-            });
-        }
-    });
-
-</script>
