@@ -239,9 +239,9 @@ body {
 .auth-form input[type="text"],
 .auth-form input[type="email"],
 .auth-form input[type="password"] {
-    padding: 8px 10px;     /* Reduce padding */
-    font-size: 0.9em;       /* Smaller text */
-    height: 35px;           /* Smaller height */
+    padding: 8px 10px;    
+    font-size: 0.9em;      
+    height: 35px;           
     border-radius: 5px;
     border: 1px solid #ccc;
     width: 90%;
