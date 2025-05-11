@@ -235,16 +235,29 @@ body {
     color: #555;
 }
 
+/* General style for all input fields */
 .auth-form input[type="text"],
 .auth-form input[type="email"],
 .auth-form input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
+    padding: 8px 10px;     /* Reduce padding */
+    font-size: 0.9em;       /* Smaller text */
+    height: 35px;           /* Smaller height */
     border-radius: 5px;
-    font-size: 1em;
-    color: #333;
+    border: 1px solid #ccc;
+    width: 90%;
 }
+
+/* Responsive tweak for mobile view */
+@media (max-width: 600px) {
+    .auth-form input[type="text"],
+    .auth-form input[type="email"],
+    .auth-form input[type="password"] {
+        padding: 6px 8px;
+        font-size: 0.85em;
+        height: 32px;
+    }
+}
+
 
 .auth-form input::placeholder {
     color: #999;
