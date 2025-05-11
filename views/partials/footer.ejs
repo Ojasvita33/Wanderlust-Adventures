@@ -1,8 +1,22 @@
-<footer class="site-footer">
-    <div class="social-icons">
-        <a href="https://www.facebook.com/" target="_blank"><img src="/images/facebook.png" alt="Facebook" height="30"></a>
-        <a href="https://www.instagram.com/" target="_blank"><img src="/images/insta.png" alt="Instagram" height="30"></a>
-        <a href="https://twitter.com/" target="_blank"><img src="/images/twitter.png" alt="Twitter" height="30"></a>
-    </div>
-    <p class="copyright">&copy; 2025 Wanderlust Adventures. All rights reserved.</p>
+<footer class="site-footer"> 
+    <div class="social-icons">
+        <a href="https://www.facebook.com/" target="_blank"><img src="/images/facebook.png" alt="Facebook" height="30"></a>
+        <a href="https://www.instagram.com/" target="_blank"><img src="/images/insta.png" alt="Instagram" height="30"></a>
+        <a href="https://twitter.com/" target="_blank"><img src="/images/twitter.png" alt="Twitter" height="30"></a>
+    </div>
+    <p class="copyright">&copy; 2025 Wanderlust Adventures. All rights reserved.</p>
 </footer>
+
+<script>
+  const toggleBtn = document.getElementById("theme-toggle");
+  toggleBtn?.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+  });
+
+  window.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+  });
+</script>
