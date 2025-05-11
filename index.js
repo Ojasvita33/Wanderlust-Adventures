@@ -47,7 +47,7 @@ app.use('/contact', contactRoutes);
 app.use('/', async (req, res) => { 
     try {
         // Fetch the first 3 trips to display as featured
-        const featuredTrips = await Trip.find().limit(3);
+        const featuredTrips = await Trip.find().limit(6);
         res.render('home', { title: 'Wanderlust Adventures', featuredTrips: featuredTrips, user: req.session.user });
     } catch (err) {
         console.error(err);
