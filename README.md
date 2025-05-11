@@ -77,6 +77,5 @@ The application is hosted on Render:
 - 💳 Payment gateway integration for online booking
 - 🌍 Multilingual and multi-currency support
 - 🧠 AI-based trip recommendations
-- 📲 Responsive UI and Progressive Web App (PWA) capabilities
 
 ---
