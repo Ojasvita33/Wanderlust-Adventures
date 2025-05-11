@@ -117,7 +117,7 @@ body {
         box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
         overflow: hidden;
         transform: translateX(100%); /* Initially off-screen */
-        display: flex;
+        display: none;
     }
 
     .nav-links li {
@@ -141,8 +141,9 @@ body {
 
     /* Show the menu when active */
     .nav-links.active {
-        transform: translateX(0); /* Slide in from the right */
-    }
+    display: flex;
+    transform: translateX(0);
+}
 
     .hamburger {
         display: flex;
@@ -276,4 +277,21 @@ body {
     color: green;
     margin-bottom: 15px;
     text-align: center;
+}
+
+/* Make responsive for smaller screens */
+@media (max-width: 480px) {
+    .auth-container {
+        margin: 30px 15px;
+        padding: 15px;
+    }
+
+    .auth-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .auth-button {
+        padding: 12px;
+        font-size: 1.1rem;
+    }
 }
