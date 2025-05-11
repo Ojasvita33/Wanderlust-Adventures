@@ -17,6 +17,34 @@ body {
     box-shadow: 0.5 1 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .container {
+    background-color: #1e1e1e;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .main-nav {
+    background: linear-gradient(to right, #0f4c75, #3282b8);
+}
+
+body.dark-mode .site-footer {
+    background-color: #1a1a1a;
+    color: #ccc;
+}
+
+body.dark-mode a {
+    color: #90caf9;
+}
+
+body.dark-mode img {
+    filter: brightness(0.85);
+}
+
 /* Navbar */
 .main-nav {
     background: linear-gradient(to right, hsl(190, 77%, 33%), #14b8a6);
