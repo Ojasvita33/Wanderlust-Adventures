@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 
 const tripSchema = new mongoose.Schema({
@@ -9,7 +8,9 @@ const tripSchema = new mongoose.Schema({
     itinerary: { type: [String] },
     details: { type: Object },
     image: { type: String }, 
-    images: { type: [String] }
+    images: { type: [String] },
+    city: { type: String, required: true }, // For weather API
+    country: { type: String } // Optional, for more accuracy
 });
 
 module.exports = mongoose.model('Trip', tripSchema);
