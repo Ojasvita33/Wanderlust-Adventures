@@ -75,8 +75,4 @@ app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`)
 // Connect to MongoDB
 mongoose.connect(process.env.mongodb, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))
-<<<<<<< HEAD
     .catch(err => console.error('MongoDB connection error:', err));
-=======
-    .catch(err => console.error('MongoDB connection error:', err));
->>>>>>> 8fd1a0cd3fda0a9c3742b3970ecc4ba44cc3589f
