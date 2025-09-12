@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Base Styles */
 body {
     font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -308,3 +309,315 @@ body {
         font-size: 1.1rem;
     }
 }
+=======
+/* Base Styles */
+body {
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0.5 1 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar */
+.main-nav {
+    background: linear-gradient(to right, hsl(190, 77%, 33%), #14b8a6);
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+}
+
+/* Logo */
+.logo-container a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.logo-container img {
+    height: 35px;
+    margin-right: 10px;
+}
+
+/* Navbar Links */
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.nav-links li {
+    margin-left: 15px;
+}
+
+.nav-links li a {
+    color: white;
+    font-size: 1em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #ffc107;
+}
+
+/* Hamburger Icon */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 101;
+    transition: all 0.3s ease;
+}
+
+.hamburger .line {
+    height: 3px;
+    background-color: white;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animate hamburger into "X" when nav is active */
+.hamburger.active .line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Responsive - Mobile Menu */
+@media (max-width: 768px) {
+    .main-nav {
+        padding: 10px 15px;
+    }
+
+    /* Nav Links - Mobile */
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(to right, hsl(190, 77%, 33%), #14b8a6);
+        border-radius: 0 0 8px 8px;
+        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transform: translateX(100%); /* Initially off-screen */
+        display: none;
+    }
+
+    .nav-links li {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li a {
+        padding: 12px;
+        display: block;
+        color: white !important;
+        font-size: 1.1em;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+        color: yellow !important;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Show the menu when active */
+    .nav-links.active {
+    display: flex;
+    transform: translateX(0);
+}
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Prevent sidebar from overflowing */
+    body {
+        overflow-x: hidden;
+    }
+}
+
+/* Footer */
+.site-footer {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 8px;
+}
+
+.social-icons img {
+    height: 25px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+.copyright {
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+
+/* Auth Pages */
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.auth-header {
+    display: inline-block;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+.auth-header h2 {
+    color: hsl(190 80% 45%);
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.auth-header p {
+    color: #555;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.auth-form {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.auth-form .form-group {
+    margin-bottom: 20px;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* General style for all input fields */
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+    padding: 8px 10px;    
+    font-size: 0.9em;      
+    height: 35px;           
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 90%;
+}
+
+/* Responsive tweak for mobile view */
+@media (max-width: 600px) {
+    .auth-form input[type="text"],
+    .auth-form input[type="email"],
+    .auth-form input[type="password"] {
+        padding: 6px 8px;
+        font-size: 0.85em;
+        height: 32px;
+    }
+}
+
+
+.auth-form input::placeholder {
+    color: #999;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 14px;
+    background-color: hsl(190 80% 45%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.auth-button:hover {
+    background-color: #14b8a6;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.success-message {
+    color: green;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Make responsive for smaller screens */
+@media (max-width: 480px) {
+    .auth-container {
+        margin: 30px 15px;
+        padding: 15px;
+    }
+
+    .auth-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .auth-button {
+        padding: 12px;
+        font-size: 1.1rem;
+    }
+}
+>>>>>>> 8fd1a0cd3fda0a9c3742b3970ecc4ba44cc3589f

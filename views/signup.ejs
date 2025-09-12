@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,3 +64,70 @@
 </body>
 
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup | Wanderlust Adventures</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .popup-message {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f44336; 
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+    <div class="auth-container">
+        <div class="auth-header">
+            <h2>Join the Adventure!</h2>
+            <p>Create an account to start planning.</p>
+        </div>
+        <form action="/auth/signup" method="POST" class="auth-form">
+            <% if (messages && messages.error) { %>
+                <p class="error-message"><%= messages.error %></p>
+            <% } %>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Choose a Username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Create a Password" required>
+            </div>
+            <button type="submit" class="auth-button">SIGN UP</button>
+
+            <p class="form-link" style="text-align: center;">Already have an account? <a href="/auth/login" style="color: hsl(190 80% 45%);text-decoration: none;">Login</a></p>
+        </form>
+    </div>
+
+    <% if (locals.popupMessage) { %>
+        <div class="popup-message"><%= locals.popupMessage %></div>
+    <% } %>
+
+    <%- include('partials/footer') %>
+</body>
+
+</html>
+>>>>>>> 8fd1a0cd3fda0a9c3742b3970ecc4ba44cc3589f

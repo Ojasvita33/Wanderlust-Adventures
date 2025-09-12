@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -346,3 +347,353 @@
 </body>
 
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Wanderlust Adventures</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Contact Page */
+        .contact-page {
+            padding: 30px 20px;
+        }
+
+        .contact-page h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.25rem;
+            font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-weight: 700;
+            color: hsl(190 80% 45%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        /* Left Side - Send Us a Message */
+        .contact-form {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-form h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: hsl(190 80% 45%);
+        }
+
+        .contact-form p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form input[type="text"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        .contact-form textarea {
+            min-height: 100px;
+        }
+
+        .contact-form .button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1em;
+            background-color: hsl(190 80% 45%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .contact-form .button:hover {
+            background-color: #14b8a6;
+        }
+
+        /* Right Side - Contact Information */
+        .contact-info {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+            /* Added box shadow */
+        }
+
+        .contact-info h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: hsl(190 80% 45%);
+        }
+
+        .contact-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .contact-info .info-item {
+            margin-bottom: 15px;
+            color: hsl(190 80% 45%);
+        }
+
+        .contact-info strong {
+            display: block;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .contact-info a {
+            color: hsl(190 80% 45%);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #14b8a6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                /* Stack the columns on mobile */
+                gap: 15px;
+            }
+
+            .contact-form h2,
+            .contact-info h2 {
+                font-size: 1.25rem;
+            }
+
+            .contact-form input[type="text"],
+            .contact-form input[type="email"],
+            .contact-form textarea {
+                font-size: 0.9rem;
+            }
+
+            .contact-form .button {
+                font-size: 1em;
+                padding: 10px;
+            }
+
+            .contact-info p {
+                font-size: 0.9rem;
+            }
+        }
+
+        #success-popup {
+            position: fixed;
+            bottom: 20px;
+            /* This line will be overridden in the mobile media query */
+            right: 20px;
+            /* This line will also be overridden in the mobile media query */
+            background-color: white;
+            color: #333;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
+            z-index: 1000;
+            width: 300px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            #success-popup {
+                top: 80px;
+                /* Adjust this value to be lower than the navbar */
+                left: 20px;
+                bottom: unset;
+                right: unset;
+            }
+        }
+
+        #success-popup.show {
+            opacity: 1;
+            visibility: visible;
+            transition-delay: 0s;
+        }
+
+        #success-popup h3 {
+            margin-top: 0;
+            font-size: 1em;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        #success-popup button.close-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: none;
+            border: none;
+            color: #777;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        #success-popup button.close-button:hover {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+        <div class="container contact-page">
+            <h1>Get In Touch</h1>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h2>Send Us a Message</h2>
+                    <p>Fill out the form below and we'll get back to you.</p>
+                    <form id="contactForm" action="/contact" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" name="subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="button">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h2>Contact Information</h2>
+                    <p>Have questions or need assistance? Reach out to us directly.</p>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>Email: <a href="mailto:info@wanderlustadventures.com">info@wanderlustadventures.com</a></p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>Phone: +1 (234) 567-890</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Address: 123 Adventure Ave, Travel City, World 54321</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="success-popup"></div>
+
+        <%- include('partials/footer') %>
+
+            <script>
+                const contactForm = document.getElementById('contactForm');
+                const successPopup = document.getElementById('success-popup');
+
+                contactForm.addEventListener('submit', function (event) {
+                    event.preventDefault(); // Prevent the default form submission
+
+                    const formData = new FormData(contactForm);
+                    fetch('/contact', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                successPopup.innerHTML = `
+                <h3>Message Sent!</h3>
+                <p>${data.success}</p>
+                <button class="close-button" onclick="document.getElementById('success-popup').classList.remove('show')">&times;</button>
+            `;
+                                successPopup.classList.add('show');
+                                setTimeout(() => {
+                                    successPopup.classList.remove('show');
+                                    successPopup.innerHTML = ''; // Clear the content
+                                    contactForm.reset();
+                                }, 5000); // Increased the display time slightly
+                            } else if (data.error) {
+                                console.error('Error sending message:', data.error);
+                                successPopup.innerHTML = `
+                <div style="background-color:#f44336; color:white; padding:10px; border-radius:5px;">
+                    Error: ${data.error}
+                    <button class="close-button" onclick="document.getElementById('success-popup').classList.remove('show')">&times;</button>
+                </div>
+            `;
+                                successPopup.classList.add('show');
+                                setTimeout(() => {
+                                    successPopup.classList.remove('show');
+                                    successPopup.innerHTML = '';
+                                }, 5000);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Fetch error:', error);
+                            successPopup.innerHTML = `
+            <div style="background-color:#f44336; color:white; padding:10px; border-radius:5px;">
+                Error: Could not send message. Please try again.
+                <button class="close-button" onclick="document.getElementById('success-popup').classList.remove('show')">&times;</button>
+            </div>
+        `;
+                            successPopup.classList.add('show');
+                            setTimeout(() => {
+                                successPopup.classList.remove('show');
+                                successPopup.innerHTML = '';
+                            }, 5000);
+                        });
+                });
+
+            </script>
+</body>
+
+</html>
+>>>>>>> 8fd1a0cd3fda0a9c3742b3970ecc4ba44cc3589f
