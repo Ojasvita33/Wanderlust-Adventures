@@ -4,15 +4,11 @@ const bookingController = require('../controllers/bookingController');
 const { authMiddleware } = require('../middleware/authMiddleware'); // Using authMiddleware
 
 // Route to proceed to the payment/confirmation page
-router.post('/payment', authMiddleware, bookingController.proceedToPayment); // Changed to authMiddleware
-
+router.post('/payment', authMiddleware, bookingController.proceedToPayment); 
 // Route to process the booking
-router.post('/book', authMiddleware, bookingController.processBooking); // Changed to authMiddleware
-
+router.post('/book', authMiddleware, bookingController.processBooking); 
 // Route to view booking details
-router.get('/:id', authMiddleware, bookingController.getBookingById); // Changed to authMiddleware
-
+router.get('/:id', authMiddleware, bookingController.getBookingById); 
 // Route to cancel a booking
-router.delete('/:id', authMiddleware, bookingController.deleteBooking); // Changed to authMiddleware
-
+router.delete('/:id', authMiddleware, bookingController.deleteBooking); 
 module.exports = router;

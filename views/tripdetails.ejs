@@ -5,10 +5,179 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <%= title %>
+        <%= title %> | Wanderlust Adventures
     </title>
     <link rel="stylesheet" href="/css/style.css">
     <style>
+        /* Trip Details Page - Updated */
+        .trip-details {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .trip-details .image-container {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .trip-details .image-container img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .trip-details .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            color: white;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            padding: 15px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .trip-details .image-overlay h2 {
+            margin-bottom: 5px;
+            font-size: 3rem;
+            font-weight: 800;
+            color: hsl(40 90% 60%);
+            text-shadow: 2px 2px #333;
+        }
+
+        .trip-details .image-overlay p {
+            font-size: 1em;
+            color: white;
+            text-shadow: 1px 1px #333;
+        }
+
+        .trip-details .details-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .trip-details .itinerary-box h2,
+        .trip-details .trip-details-box h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            color: hsl(190 80% 45%);
+        }
+
+        .trip-details .itinerary-box ul,
+        .trip-details .trip-details-box ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        .trip-details .itinerary-box li,
+        .trip-details .trip-details-box li {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .trip-details .booking-info-box {
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.364);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background-color: #fdfbf8;
+        }
+
+        .trip-details .booking-info-box .price {
+            color: hsl(190 80% 45%);
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .trip-details .booking-info-box .price span {
+            font-size: 2em;
+        }
+
+        .trip-details .booking-info-box h3 {
+            text-align: center;
+            color: #555;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        .trip-details .booking-info-box .button.book-now-btn {
+            background-color: hsl(40 90% 60%);
+            color: black;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Updated styling for "Proceed to Payment" button */
+        .trip-details .booking-info-box .button.primary {
+            background-color: hsl(222, 78%, 45%);
+            color: rgb(255, 255, 255);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .trip-details .booking-info-box .button.primary:hover {
+            background-color: hsl(190 80% 45%);
+        }
+
+        .trip-details .booking-info-box .button.book-now-btn:hover {
+            background-color: hsl(40 80% 50%);
+        }
+
+        .trip-details .booking-info-box p.need-help {
+            text-align: center;
+            font-size: 0.9em;
+            margin-top: 15px;
+        }
+
+        .trip-details .booking-info-box p.need-help a {
+            color: hsl(190 80% 45%);
+            text-decoration: none;
+        }
+
+        .trip-details .booking-info-box p.need-help a:hover {
+            text-decoration: underline;
+        }
+
+        .trip-details .trip-details-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .trip-details .trip-details-box li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .trip-details .trip-details-box li strong {
+            font-weight: bold;
+            color: #333;
+        }
+
         #calendar-modal {
             display: none;
             position: fixed;
@@ -80,10 +249,11 @@
 
         .image-overlay {
             position: absolute;
-            bottom: 0; /* Text at the bottom */
+            bottom: 0;
             left: 0;
             color: white;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent); /* Gradient from bottom */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            /* Gradient from bottom */
             padding: 15px;
             width: 100%;
             text-align: center;
@@ -105,7 +275,7 @@
         }
 
         .image-slider {
-            position: absolute; /* Absolute for covering the container */
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -126,6 +296,139 @@
         .image-slider img.active {
             opacity: 1;
         }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 768px) {
+
+            /* Trip Details Section */
+            .trip-details {
+                grid-template-columns: 1fr;
+                /* Stack everything vertically on small screens */
+                padding: 20px;
+            }
+
+            .image-container {
+                height: 300px;
+                /* Make the image smaller on mobile */
+                margin-bottom: 15px;
+            }
+
+            .trip-details .image-container img {
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .trip-details .image-overlay h2 {
+                font-size: 2rem;
+                /* Smaller title font size */
+            }
+
+            .trip-details .image-overlay p {
+                font-size: 0.9rem;
+                /* Smaller description font size */
+            }
+
+            .trip-details .details-grid {
+                grid-template-columns: 1fr;
+                /* Stack the columns vertically on mobile */
+                gap: 20px;
+            }
+
+            /* Booking Info Box */
+            .trip-details .booking-info-box {
+                padding: 15px;
+            }
+
+            .trip-details .booking-info-box .price {
+                font-size: 1.3em;
+            }
+
+            .trip-details .booking-info-box .button.book-now-btn {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+
+            .trip-details .booking-info-box p.need-help {
+                font-size: 0.8em;
+            }
+
+            /* Calendar Modal */
+            .calendar-content {
+                width: 90%;
+            }
+
+            /* Image Slider */
+            .image-slider img {
+                height: 100%;
+                /* Ensure image slider images are responsive */
+                max-width: 100%;
+            }
+
+            /* Adjust calendar days size */
+            .calendar-day {
+                padding: 6px;
+                font-size: 0.8em;
+            }
+
+            #selected-date-display {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            /* Further adjustments for very small screens like phones */
+            .trip-details .image-overlay h2 {
+                font-size: 1.3rem;
+                /* Even smaller title */
+                margin-left: 0px;
+                margin-right: 28px;
+            }
+
+            .trip-details .image-overlay p {
+                font-size: 0.8rem;
+                /* Smaller description */
+                margin-left: 0px;
+                margin-right: 28px;
+            }
+
+            .trip-details .booking-info-box .price {
+                font-size: 1.2em;
+            }
+
+            .trip-details .booking-info-box .button.book-now-btn {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+
+            .trip-details .booking-info-box h3 {
+                font-size: 1em;
+            }
+
+            .trip-details .booking-info-box .button.book-now-btn {
+                width: 100%;
+                /* Make "Book Now" button full width on smaller screens */
+            }
+
+            /* Calendar Modal */
+            .calendar-content {
+                width: 80%;
+            }
+
+            .calendar-body {
+                grid-template-columns: repeat(7, 1fr);
+                /* Calendar days should be responsive */
+            }
+
+            .calendar-day {
+                padding: 4px;
+                font-size: 0.9em;
+            }
+
+            #selected-date-display {
+                font-size: 0.8em;
+            }
+        }
     </style>
 </head>
 
@@ -143,12 +446,28 @@
                     </p>
                 </div>
                 <div class="image-slider">
-                    <% if (trip.images && trip.images.length > 0) { %>
-                        <% trip.images.forEach(image => { %>
+                    <% if (trip.images && trip.images.length> 0) { %>
+                        <% trip.images.forEach(image=> { %>
                             <img src="<%= image %>" alt="<%= trip.name %> Banner">
-                        <% }); %>
-                    <% } else if (trip.image) { %>
-                        <img src="<%= trip.image %>" alt="<%= trip.name %>">
+                            <% }); %>
+                                <% } else if (trip.image) { %>
+                                    <img src="<%= trip.image %>" alt="<%= trip.name %>">
+                                    <% } %>
+
+                    <!-- Public Holidays Info (below weather) -->
+                    <% if (holidays && holidays.response && holidays.response.holidays && holidays.response.holidays.length > 0) { %>
+                        <div class="holidays-box" style="margin: 20px 0; padding: 15px; background: #fffbe6; border-radius: 8px;">
+                            <h2 style="color: hsl(40 90% 60%);">Public Holidays (<%= trip.country || (trip.details && trip.details.Region) || 'N/A' %>, <%= trip.date ? new Date(trip.date).getFullYear() : new Date().getFullYear() %>)</h2>
+                            <ul>
+                                <% holidays.response.holidays.slice(0, 5).forEach(function(holiday) { %>
+                                    <li><strong><%= holiday.name %></strong> - <%= holiday.date.iso %></li>
+                                <% }); %>
+                            </ul>
+                        </div>
+                    <% } else { %>
+                        <div class="holidays-box" style="margin: 20px 0; padding: 15px; background: #ffeaea; border-radius: 8px; color: #a33;">
+                            <strong>Public holidays info not available for this destination.</strong>
+                        </div>
                     <% } %>
                 </div>
             </div>
@@ -160,22 +479,65 @@
                         <ul>
                             <% for (const key in trip.details) { %>
                                 <li><strong>
-                                            <%= key %>:
-                                        </strong>
-                                        <%= trip.details[key] %>
+                                        <%= key %>:
+                                    </strong>
+                                    <%= trip.details[key] %>
                                 </li>
-                                <% } %>
-                        </ul>
-                        <% } else { %>
-                            <p>Detailed trip information will be provided soon.</p>
                             <% } %>
-                                <br>
-                                <h2>Itinerary</h2>
-                                <% if (trip.itinerary && trip.itinerary.length> 0) { %>
-                                    <ul>
-                                        <% trip.itinerary.forEach(item=> { %>
-                                            <li>
-                                                <%= item %>
+                        </ul>
+                    <% } else { %>
+                        <p>Detailed trip information will be provided soon.</p>
+                    <% } %>
+                    <p><strong>City:</strong> <%= trip.city %> <% if (trip.country) { %> | <strong>Country:</strong> <%= trip.country %> <% } %></p>
+
+                    <!-- Google Maps Embed -->
+                    <% let mapLocation = '';
+                        if (trip.city || trip.country) {
+                            mapLocation = (trip.city ? trip.city : '') + (trip.country ? ',' + trip.country : '');
+                        } else if (trip.details && trip.details.Region) {
+                            mapLocation = trip.details.Region;
+                        }
+                    %>
+                    <% if (mapLocation) { %>
+                        <div class="map-box" style="margin: 20px 0;">
+                            <h2 style="color: hsl(190 80% 45%);">Location Map</h2>
+                            <iframe
+                                width="100%"
+                                height="300"
+                                style="border:0; border-radius:8px;"
+                                loading="lazy"
+                                allowfullscreen
+                                referrerpolicy="no-referrer-when-downgrade"
+                                src="https://www.google.com/maps?q=<%= encodeURIComponent(mapLocation) %>&output=embed">
+                            </iframe>
+                        </div>
+                    <% } %>
+
+                    <!-- Weather Info -->
+                    <% if (weather && weather.weather && weather.main) { %>
+                        <div class="weather-box" style="margin: 20px 0; padding: 15px; background: #eaf6fb; border-radius: 8px;">
+                            <h2 style="color: hsl(190 80% 45%);">Current Weather in <%= trip.city %> <% if (trip.country) { %>, <%= trip.country %> <% } %></h2>
+                            <p style="font-size: 1.2em;">
+                                <strong><%= weather.weather[0].main %></strong> - <%= weather.weather[0].description %><br>
+                                <strong>Temperature:</strong> <%= weather.main.temp %>°C<br>
+                                <strong>Feels Like:</strong> <%= weather.main.feels_like %>°C<br>
+                                <strong>Humidity:</strong> <%= weather.main.humidity %>%<br>
+                                <strong>Wind:</strong> <%= weather.wind.speed %> m/s
+                            </p>
+                        </div>
+                    <% } else { %>
+                        <div class="weather-box" style="margin: 20px 0; padding: 15px; background: #ffeaea; border-radius: 8px; color: #a33;">
+                            <strong>Weather info not available for this destination.</strong>
+                        </div>
+                    <% } %>
+
+                    <br>
+                    <h2>Itinerary</h2>
+                    <% if (trip.itinerary && trip.itinerary.length> 0) { %>
+                        <ul>
+                            <% trip.itinerary.forEach(item=> { %>
+                                <li>
+                                    <%= item %>
                                             </li>
                                             <% }); %>
                                     </ul>
@@ -187,8 +549,22 @@
 
                 <div class="booking-info-box">
                     <p class="price">₹<span>
-                                <%= trip.price %>
-                            </span> Per Person</p>
+                            <%= trip.price %>
+                        </span> INR
+                    </p>
+                    <% if (exchangeRates && exchangeRates.conversion_rates) { %>
+                        <div class="exchange-box" style="margin: 10px 0; padding: 10px; background: #f3f6ff; border-radius: 8px;">
+                            <strong>Equivalent Price:</strong><br>
+                            $<%= (trip.price * exchangeRates.conversion_rates.USD).toFixed(2) %> USD<br>
+                            €<%= (trip.price * exchangeRates.conversion_rates.EUR).toFixed(2) %> EUR<br>
+                            £<%= (trip.price * exchangeRates.conversion_rates.GBP).toFixed(2) %> GBP
+                        </div>
+                    <% } else { %>
+                        <div class="exchange-box" style="margin: 10px 0; padding: 10px; background: #ffeaea; border-radius: 8px; color: #a33;">
+                            <strong>Currency exchange rates not available.</strong>
+                        </div>
+                    <% } %>
+                        </span> Per Person</p>
                     <h3>Ready for an adventure?</h3>
                     <% if (user) { %>
                         <button class="button book-now-btn" onclick="openCalendarModal()">Book Now</button>
@@ -276,7 +652,7 @@
                         if (date < today) {
                             dayCell.classList.add('disabled');
                         } else {
-                            dayCell.addEventListener('click', function() {
+                            dayCell.addEventListener('click', function () {
                                 document.querySelectorAll('.calendar-day.selected').forEach(selected => {
                                     selected.classList.remove('selected');
                                 });
@@ -301,14 +677,13 @@
                     renderCalendar();
                 }
 
-                window.addEventListener('click', function(event) {
+                window.addEventListener('click', function (event) {
                     if (event.target == calendarModal) {
                         closeCalendarModal();
                     }
                 });
 
                 function checkDateSelection() {
-                    console.log('checkDateSelection function called. selectedDate:', selectedDate);
                     const errorDisplay = document.getElementById('selected-date-display'); // Using the same display element for simplicity
                     if (!selectedDate) {
                         errorDisplay.textContent = 'Please select dates from "Book Now" before proceeding.';
@@ -321,7 +696,7 @@
                 }
 
                 // Image slider script
-                document.addEventListener('DOMContentLoaded', function() {
+                document.addEventListener('DOMContentLoaded', function () {
                     const slider = document.querySelector('.image-slider');
                     const images = slider.querySelectorAll('img');
                     const overlay = document.querySelector('.image-overlay');

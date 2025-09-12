@@ -1,0 +1,62 @@
+--- Folder Structure ---
+.env
+.gitignore
+[controllers]
+    ├── authController.js
+    ├── bookingController.js
+    ├── contactController.js
+    ├── tripController.js
+    └── userController.js
+[docs]
+    ├── .project_structure_filter
+    └── project_structure_filtered.txt
+index.js
+[middleware]
+    ├── authMiddleware.js
+    └── errorMiddleware.js
+[models]
+    ├── Bookings.js
+    ├── Trip.js
+    └── User.js
+[node_modules]
+package-lock.json
+package.json
+[public]
+    ├── [css]
+        └── style.css
+    └── [images]
+        ├── darjeeling.jpg
+        ├── facebook.png
+        ├── goa.webp
+        ├── homebanner.avif
+        ├── homebanner.jpg
+        ├── homebanner.webp
+        ├── iceland.jpg
+        ├── insta.png
+        ├── japan.webp
+        ├── kerala.jpg
+        ├── ladakh.jpeg
+        ├── logo.png
+        ├── twitter.png
+        └── vietnam.jpg
+[routes]
+    ├── authRoutes.js
+    ├── bookingRoutes.js
+    ├── contactRoutes.js
+    ├── tripRoutes.js
+    └── userRoutes.js
+[views]
+    ├── 404.ejs
+    ├── contact.ejs
+    ├── home.ejs
+    ├── login.ejs
+    ├── [partials]
+        ├── footer.ejs
+        └── header.ejs
+    ├── payment.ejs
+    ├── profile.ejs
+    ├── signup.ejs
+    ├── tripdetails.ejs
+    └── trips.ejs
+
+--- File Contents ---

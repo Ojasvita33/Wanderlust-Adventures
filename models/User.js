@@ -21,7 +21,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    // You can add other fields like createdAt, updatedAt, etc.
 });
 
 module.exports = mongoose.model('User', userSchema);

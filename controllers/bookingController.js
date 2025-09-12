@@ -38,6 +38,18 @@ exports.processBooking = async (req, res) => {
         });
 
         await newBooking.save();
+
+        // Send booking confirmation email
+        try {
+            const { sendMail } = require('../utils/mailApi');
+            const userEmail = req.session.user.email;
+            const subject = `Booking Confirmed: ${trip.name}`;
+            const text = `Dear ${req.session.user.name || 'Traveler'},\n\nYour booking for '${trip.name}' on ${selectedDate} is confirmed!\n\nThank you for choosing Wanderlust Adventures.`;
+            await sendMail(userEmail, subject, text);
+        } catch (err) {
+            console.error('Error sending booking confirmation email:', err);
+        }
+
         res.redirect(`/users/profile`); // Redirect to profile after booking
     } catch (error) {
         console.error('Error creating booking:', error);

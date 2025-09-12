@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title>Payment | Wanderlust Adventures</title>
     <link rel="stylesheet" href="/css/style.css">
     <style>
         .payment-page {
@@ -12,7 +12,7 @@
             justify-content: center;
             align-items: center;
             min-height: 60vh;
-            padding: 20px; /* Add some padding around the page */
+            padding: 20px;
         }
 
         .payment-box {
@@ -20,19 +20,19 @@
             border: 1px solid #ddd;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* More prominent shadow */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.34);
             text-align: center;
             max-width: 500px;
-            width: 100%;
+            width: 95%;
         }
 
         .payment-box h2 {
-            color: hsl(190 80% 45%); /* Blue heading color */
+            color: hsl(190 80% 45%);
             margin-top: 0;
             margin-bottom: 20px;
             border-bottom: 2px solid #eee;
             padding-bottom: 10px;
-            font-size: 1.75em; /* Slightly larger heading */
+            font-size: 1.75em;
         }
 
         .payment-box h3 {
@@ -51,7 +51,7 @@
             display: inline-block;
             width: 100%;
             padding: 12px 20px;
-            background-color: hsl(40 90% 60%); /* Yellow/Gold confirm button */
+            background-color: hsl(40 90% 60%);
             color: black;
             text-decoration: none;
             border-radius: 5px;
@@ -64,12 +64,12 @@
         }
 
         .confirm-payment-btn:hover {
-            background-color: hsl(40 80% 50%); /* Darker gold on hover */
+            background-color: hsl(40 80% 50%);
         }
 
         .button.secondary {
             display: inline-block;
-            width: 100%;
+            width: 90%;
             padding: 10px 20px;
             background-color: #f8f9fa;
             color: #555;
@@ -92,36 +92,66 @@
             margin-top: 20px;
             font-weight: bold;
         }
+
+        @media (max-width: 600px) {
+            .payment-box {
+                padding: 20px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            }
+
+            .payment-box h2 {
+                font-size: 1.5em;
+            }
+
+            .payment-box h3 {
+                font-size: 1.2em;
+            }
+
+            .confirm-payment-btn,
+            .button.secondary {
+                font-size: 1em;
+                padding: 10px;
+            }
+
+            .payment-box p {
+                font-size: 0.95em;
+            }
+        }
     </style>
 </head>
 
 <body>
     <%- include('partials/header') %>
 
-    <div class="container payment-page">
-        <div class="payment-box">
-            <h2>Confirm Payment & Book</h2>
-            <p>Review your booking details before confirming.</p>
+        <div class="container payment-page">
+            <div class="payment-box">
+                <h2>Confirm Payment & Book</h2>
+                <p>Review your booking details before confirming.</p>
 
-            <% if (trip && selectedDate) { %>
-                <h3><%= trip.name %></h3>
-                <p>Selected Date: <%= new Date(selectedDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'numeric', year: 'numeric' }) %></p>
-                <p>Price Per Person: ₹<%= trip.price %></p>
+                <% if (trip && selectedDate) { %>
+                    <h3>
+                        <%= trip.name %>
+                    </h3>
+                    <p>Selected Date: <%= new Date(selectedDate).toLocaleDateString('en-IN', { day: 'numeric' ,
+                            month: 'numeric' , year: 'numeric' }) %>
+                    </p>
+                    <p>Price Per Person: ₹<%= trip.price %>
+                    </p>
 
-                <form action="/bookings/book" method="POST">
-                    <input type="hidden" name="tripId" value="<%= trip._id %>">
-                    <input type="hidden" name="selectedDate" value="<%= selectedDate %>">
-                    <button type="submit" class="confirm-payment-btn">Confirm & Book Now</button>
-                </form>
-                <a href="/trips/<%= trip._id %>" class="button secondary">Go Back</a>
-            <% } else { %>
-                <p class="error-message">Error: Trip details or selected date not found.</p>
-                <a href="/trips" class="button secondary">Back to Trips</a>
-            <% } %>
+                    <form action="/bookings/book" method="POST">
+                        <input type="hidden" name="tripId" value="<%= trip._id %>">
+                        <input type="hidden" name="selectedDate" value="<%= selectedDate %>">
+                        <button type="submit" class="confirm-payment-btn">Confirm & Book Now</button>
+                    </form>
+                    <a href="/trips/<%= trip._id %>" class="button secondary">Go Back</a>
+                    <% } else { %>
+                        <p class="error-message">Error: Trip details or selected date not found.</p>
+                        <a href="/trips" class="button secondary">Back to Trips</a>
+                        <% } %>
+            </div>
         </div>
-    </div>
 
-    <%- include('partials/footer') %>
+        <%- include('partials/footer') %>
 </body>
 
 </html>

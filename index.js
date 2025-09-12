@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const methodOverride = require('method-override');
 const { errorMiddleware } = require('./middleware/errorMiddleware');
-const Trip = require('./models/Trip'); // Import the Trip model
+const Trip = require('./models/Trip'); 
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.use(session({
     saveUninitialized: false,
     cookie: { maxAge: 30 * 60 * 1000 }
 }));
-app.use(methodOverride('_method')); // Method override is after session middleware
+app.use(methodOverride('_method')); 
 
 // View Engine
 app.set('view engine', 'ejs');
@@ -28,7 +28,7 @@ app.set('views', path.join(__dirname, 'views'));
 // Make session data available to views
 app.use((req, res, next) => {
     res.locals.user = req.session.user;
-    res.locals.messages = req.session.messages || {}; // Ensure messages object exists
+    res.locals.messages = req.session.messages || {}; 
     next();
 });
 
@@ -37,17 +37,16 @@ const authRoutes = require('./routes/authRoutes');
 const tripRoutes = require('./routes/tripRoutes');
 const userRoutes = require('./routes/userRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
-const contactRoutes = require('./routes/contactRoutes'); // New contact route
+const contactRoutes = require('./routes/contactRoutes'); 
 
 app.use('/auth', authRoutes);
-app.use('/trips', tripRoutes); // Dedicated route for trips
+app.use('/trips', tripRoutes);
 app.use('/users', userRoutes);
 app.use('/bookings', bookingRoutes);
-app.use('/contact', contactRoutes); // Use the new contact route
-app.use('/', async (req, res) => { // Home route now uses /
+app.use('/contact', contactRoutes); 
+app.use('/', async (req, res) => { 
     try {
-        // Fetch the first 3 trips to display as featured
-        const featuredTrips = await Trip.find().limit(3);
+        const featuredTrips = await Trip.find().limit(6);
         res.render('home', { title: 'Wanderlust Adventures', featuredTrips: featuredTrips, user: req.session.user });
     } catch (err) {
         console.error(err);

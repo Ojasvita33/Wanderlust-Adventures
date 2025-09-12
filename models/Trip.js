@@ -7,8 +7,10 @@ const tripSchema = new mongoose.Schema({
     date: { type: Date, required: true },
     itinerary: { type: [String] },
     details: { type: Object },
-    image: { type: String }, // Single featured image
-    images: { type: [String] } // Array of banner images
+    image: { type: String }, 
+    images: { type: [String] },
+    city: { type: String, required: true }, // For weather API
+    country: { type: String } // Optional, for more accuracy
 });
 
 module.exports = mongoose.model('Trip', tripSchema);
