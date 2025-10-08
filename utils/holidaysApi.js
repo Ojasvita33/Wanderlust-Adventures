@@ -4,6 +4,12 @@ const axios = require('axios');
 const HOLIDAYS_API_KEY = process.env.HOLIDAYS_API_KEY;
 const BASE_URL = 'https://calendarific.com/api/v2/holidays';
 
+/**
+ * Fetch public holidays for a country and year
+ * @param {string} countryCode (e.g., 'IN', 'US')
+ * @param {number} year (e.g., 2025)
+ * @returns {Promise<Object>} Holidays data
+ */
 async function getPublicHolidays(countryCode = 'IN', year = new Date().getFullYear()) {
     try {
         const response = await axios.get(BASE_URL, {
