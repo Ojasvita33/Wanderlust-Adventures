@@ -19,6 +19,11 @@ exports.proceedToPayment = async (req, res) => {
 
 exports.processBooking = async (req, res) => {
     const { tripId, selectedDate } = req.body;
+    
+    if (!req.session.user || !req.session.user._id) {
+        return res.status(401).send('Please log in to make a booking.');
+    }
+    
     const userId = req.session.user._id;
 
     if (!selectedDate) {
@@ -73,6 +78,11 @@ exports.getBookingById = async (req, res) => {
 
 exports.deleteBooking = async (req, res) => {
     const bookingId = req.params.id;
+    
+    if (!req.session.user || !req.session.user._id) {
+        return res.status(401).send('Please log in to delete a booking.');
+    }
+    
     try {
         const bookingToDelete = await Booking.findById(bookingId);
         if (!bookingToDelete) {
