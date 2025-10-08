@@ -54,15 +54,15 @@ app.use('/', async (req, res) => {
     }
 });
 
-// 404 Route
-app.use((req, res) => {
-    res.status(404).render('404', { title: '404 Not Found' });
-});
-
 // Middleware to clear messages after rendering a view
 app.use((req, res, next) => {
     req.session.messages = {};
     next();
+});
+
+// 404 Route
+app.use((req, res) => {
+    res.status(404).render('404', { title: '404 Not Found' });
 });
 
 // Error Handling Middleware
@@ -73,6 +73,6 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
 
 // Connect to MongoDB
-mongoose.connect(process.env.mongodb, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.mongodb)
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('MongoDB connection error:', err));
