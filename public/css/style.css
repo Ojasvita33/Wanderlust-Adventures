@@ -292,6 +292,42 @@ body {
     text-align: center;
 }
 
+/* Error Page Styles */
+.error-page {
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.error-page h1 {
+    color: #e74c3c;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.error-page p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.error-page .btn {
+    display: inline-block;
+    background: linear-gradient(to right, hsl(190, 77%, 33%), #14b8a6);
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: transform 0.3s ease;
+}
+
+.error-page .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 /* Make responsive for smaller screens */
 @media (max-width: 480px) {
     .auth-container {
@@ -306,5 +342,13 @@ body {
     .auth-button {
         padding: 12px;
         font-size: 1.1rem;
+    }
+    
+    .error-page h1 {
+        font-size: 2rem;
+    }
+    
+    .error-page p {
+        font-size: 1rem;
     }
 }
