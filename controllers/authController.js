@@ -37,16 +37,22 @@ exports.postSignup = async (req, res) => {
         return res.redirect('/auth/signup');
     }
 
-    // Check for existing email and username first
-    const existingUserEmail = await User.findOne({ email });
-    if (existingUserEmail) {
-        req.session.messages = { popup: 'Account with this email already exists!' };
-        return res.redirect('/auth/signup');
-    }
+    try {
+        // Check for existing email and username first
+        const existingUserEmail = await User.findOne({ email });
+        if (existingUserEmail) {
+            req.session.messages = { popup: 'Account with this email already exists!' };
+            return res.redirect('/auth/signup');
+        }
 
-    const existingUserUsername = await User.findOne({ username });
-    if (existingUserUsername) {
-        req.session.messages = { popup: 'Username already exists. Please choose a different username.' };
+        const existingUserUsername = await User.findOne({ username });
+        if (existingUserUsername) {
+            req.session.messages = { popup: 'Username already exists. Please choose a different username.' };
+            return res.redirect('/auth/signup');
+        }
+    } catch (err) {
+        console.error('Database query error during signup:', err);
+        req.session.messages = { error: 'Error checking existing users.' };
         return res.redirect('/auth/signup');
     }
 
