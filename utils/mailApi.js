@@ -1,8 +1,18 @@
-// SendGrid Email Utility for Wanderlust Adventures
-const sgMail = require('@sendgrid/mail');
+// Email Utility - Gmail via Nodemailer
+const nodemailer = require('nodemailer');
 
-const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
-sgMail.setApiKey(SENDGRID_API_KEY);
+const GMAIL_EMAIL = process.env.GMAIL_EMAIL || 'wanderlustadventures@gmail.com';
+const GMAIL_PASSWORD = process.env.GMAIL_PASSWORD || '';
+const GMAIL_NAME = process.env.GMAIL_NAME || 'Wanderlust Adventures';
+
+// Initialize Nodemailer with Gmail
+const gmailTransporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: GMAIL_EMAIL,
+    pass: GMAIL_PASSWORD
+  }
+});
 
 /**
  * Send an email to a user
@@ -13,21 +23,28 @@ sgMail.setApiKey(SENDGRID_API_KEY);
  * @returns {Promise}
  */
 async function sendMail(to, subject, text, html = null) {
-    const msg = {
-        to,
-        from: 'noreply@wanderlust.com', // Change to your verified sender
-        subject,
-        text,
-        html: html || text
-    };
-    try {
-        await sgMail.send(msg);
-        console.log('Email sent to', to);
-        return true;
-    } catch (error) {
-        console.error('SendGrid error:', error.response ? error.response.body : error.message);
-        return false;
-    }
+  // If no password configured, just log it
+  if (!GMAIL_PASSWORD) {
+    console.warn('⚠️  Gmail password not configured. Email would be sent to:', to);
+    console.log('   Subject:', subject);
+    console.log('   To enable emails, add GMAIL_PASSWORD to your .env file');
+    return true;
+  }
+
+  try {
+    await gmailTransporter.sendMail({
+      from: `${GMAIL_NAME}`,
+      to,
+      subject,
+      text,
+      html: html || text
+    });
+    console.log('✅ Email sent via Gmail to:', to);
+    return true;
+  } catch (error) {
+    console.error('❌ Gmail error:', error.message);
+    return false;
+  }
 }
 
 module.exports = { sendMail };

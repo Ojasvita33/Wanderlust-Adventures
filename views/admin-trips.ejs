@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .admin-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .admin-header h1 {
+      font-size: 2.5em;
+      color: #333;
+      margin: 0;
+    }
+
+    .btn-add-trip {
+      background-color: hsl(190, 77%, 33%);
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-add-trip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(20, 184, 166, 0.3);
+    }
+
+    .search-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1em;
+      transition: border-color 0.3s;
+    }
+
+    .search-bar input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .search-bar button {
+      padding: 12px 25px;
+      background-color: hsl(190, 77%, 33%);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .search-bar button:hover {
+      background-color: hsl(190, 77%, 28%);
+    }
+
+    .clear-search {
+      padding: 12px 15px;
+      background-color: #e5e7eb;
+      color: #333;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .clear-search:hover {
+      background-color: #d1d5db;
+    }
+
+    .success-message {
+      background-color: #d1fae5;
+      color: #065f46;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      border-left: 4px solid #10b981;
+    }
+
+    .trips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+    }
+
+    .trip-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .trip-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .trip-card-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .trip-card-content {
+      padding: 20px;
+    }
+
+    .trip-card-title {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #333;
+      margin: 0 0 10px 0;
+    }
+
+    .trip-card-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      font-size: 0.9em;
+    }
+
+    .trip-card-price {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    .trip-card-region {
+      background-color: #f0f0f0;
+      padding: 5px 10px;
+      border-radius: 4px;
+      color: #666;
+      display: inline-block;
+      font-size: 0.85em;
+    }
+
+    .trip-card-date {
+      color: #999;
+      font-size: 0.85em;
+    }
+
+    .trip-card-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .btn-sm {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+      text-decoration: none;
+      text-align: center;
+      font-size: 0.9em;
+    }
+
+    .btn-edit {
+      background-color: #0ea5e9;
+      color: white;
+    }
+
+    .btn-edit:hover {
+      background-color: #0284c7;
+    }
+
+    .btn-delete {
+      background-color: #ef4444;
+      color: white;
+    }
+
+    .btn-delete:hover {
+      background-color: #dc2626;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #999;
+    }
+
+    .empty-state-icon {
+      font-size: 4em;
+      margin-bottom: 20px;
+    }
+
+    .empty-state p {
+      font-size: 1.2em;
+      margin: 20px 0;
+    }
+
+    .empty-state a {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: hsl(190, 77%, 33%);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .trip-count {
+      background-color: #f0f0f0;
+      padding: 8px 15px;
+      border-radius: 4px;
+      color: #666;
+      font-size: 0.95em;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <div class="admin-container">
+    <a href="/admin" class="back-link">← Back to Dashboard</a>
+    
+    <div class="admin-header">
+      <div>
+        <h1><%= title %></h1>
+        <% if (trips && trips.length > 0) { %>
+          <span class="trip-count"><%= trips.length %> trip<%= trips.length !== 1 ? 's' : '' %> found</span>
+        <% } %>
+      </div>
+      <a href="/admin/trips/add" class="btn-add-trip">+ Add New Trip</a>
+    </div>
+
+    <% if (success) { %>
+      <div class="success-message"><%= success %></div>
+    <% } %>
+
+    <div class="search-bar">
+      <form method="get" style="display: flex; gap: 10px; width: 100%;">
+        <input 
+          type="text" 
+          name="search" 
+          placeholder="Search by trip name or region..." 
+          value="<%= search || '' %>"
+        >
+        <button type="submit">🔍 Search</button>
+        <% if (search) { %>
+          <a href="/admin/trips" class="clear-search">✕ Clear</a>
+        <% } %>
+      </form>
+    </div>
+
+    <% if (trips && trips.length > 0) { %>
+      <div class="trips-grid">
+        <% trips.forEach(trip => { %>
+          <div class="trip-card">
+            <% if (trip.image) { %>
+              <img src="<%= trip.image %>" alt="<%= trip.name %>" class="trip-card-image">
+            <% } else { %>
+              <div class="trip-card-image" style="display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">📷</div>
+            <% } %>
+            <div class="trip-card-content">
+              <h3 class="trip-card-title"><%= trip.name %></h3>
+              <div class="trip-card-meta">
+                <span class="trip-card-region"><%= trip.details?.Region || 'N/A' %></span>
+                <span class="trip-card-date"><%= new Date(trip.date).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' }) %></span>
+              </div>
+              <div class="trip-card-price">₹<%= trip.price.toLocaleString('en-IN') %></div>
+              <% if (trip.images && trip.images.length > 0) { %>
+                <small style="color: #999; display: block; margin-top: 10px;">📸 <%= trip.images.length %> image<%= trip.images.length !== 1 ? 's' : '' %></small>
+              <% } %>
+              <div class="trip-card-actions">
+                <a href="/admin/trips/edit/<%= trip._id %>" class="btn-sm btn-edit">✏️ Edit</a>
+                <button class="btn-sm btn-delete" onclick="deleteTrip('<%= trip._id %>', '<%= trip.name %>')">🗑️ Delete</button>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% } else { %>
+      <div class="empty-state">
+        <div class="empty-state-icon">🌍</div>
+        <p>No trips found.</p>
+        <% if (search) { %>
+          <p style="color: #666; margin: 15px 0;">Try adjusting your search filters.</p>
+        <% } %>
+        <a href="/admin/trips/add">+ Create your first trip</a>
+      </div>
+    <% } %>
+  </div>
+
+  <%- include('partials/footer') %>
+
+  <script>
+    function deleteTrip(id, name) {
+      if (confirm(`Are you sure you want to delete "${name}"?`)) {
+        fetch(`/admin/trips/${id}`, { method: 'DELETE' })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              alert('✓ Trip deleted successfully');
+              location.reload();
+            } else {
+              alert('✗ Failed to delete trip');
+            }
+          })
+          .catch(err => {
+            console.error('Error:', err);
+            alert('✗ An error occurred while deleting the trip');
+          });
+      }
+    }
+  </script>
+</body>
+</html>

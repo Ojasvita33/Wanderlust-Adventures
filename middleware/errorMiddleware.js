@@ -1,9 +1,17 @@
 exports.errorMiddleware = (err, req, res, next) => {
+  console.error('Error occurred at:', new Date().toISOString());
+  console.error('Request URL:', req.url);
+  console.error('Request Method:', req.method);
   console.error('Error:', err.stack);
-<<<<<<< HEAD
-  res.status(err.status || 500).render('error', { title: 'Error', message: 'Something went wrong!' });
+  
+  const status = err.status || 500;
+  const message = process.env.NODE_ENV === 'production' 
+    ? 'Something went wrong!' 
+    : err.message || 'Something went wrong!';
+    
+  res.status(status).render('error', { 
+    title: `Error ${status}`, 
+    message: message,
+    user: req.session.user 
+  }); 
 };
-=======
-  res.status(err.status || 500).render('error', { title: 'Error', message: 'Something went wrong!' }); 
-};
->>>>>>> 8fd1a0cd3fda0a9c3742b3970ecc4ba44cc3589f

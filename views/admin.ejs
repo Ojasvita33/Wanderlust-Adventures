@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+  <div class="container">
+    <h1 style="color:hsl(190 80% 45%);">Admin Dashboard</h1>
+    <p>Welcome, <strong><%= user && user.name %></strong></p>
+    <div style="display:flex; gap:20px; flex-wrap:wrap;">
+      <div style="padding:15px; border:1px solid #eee; border-radius:8px; min-width:200px; box-shadow:0 2px 8px rgba(0,0,0,0.08);"><a href="/admin/trips" style="text-decoration:none;color:inherit;">
+        <h3>Trips</h3>
+        <p style="font-size:1.4rem; margin:0;"><%= stats.tripCount %></p>
+      </a></div>
+      <div style="padding:15px; border:1px solid #eee; border-radius:8px; min-width:200px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+        <a href="/admin/users" style="text-decoration:none;color:inherit;">
+          <h3>Users</h3>
+          <p style="font-size:1.4rem; margin:0;"><%= stats.userCount %></p>
+        </a>
+      </div>
+    </div>
+    <div style="margin-top:30px;">
+      <a href="/admin/trips" style="display:inline-block; background-color:hsl(190 80% 45%); color:white; padding:12px 30px; text-decoration:none; border-radius:4px; margin-right:10px;">Manage Trips</a>
+      <a href="/admin/users" style="display:inline-block; background-color:#667eea; color:white; padding:12px 30px; text-decoration:none; border-radius:4px;">Manage Users</a>
+    </div>
+  </div>
+  <%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .form-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .form-header {
+      margin-bottom: 30px;
+    }
+
+    .form-header h1 {
+      font-size: 2em;
+      color: #333;
+      margin: 0 0 10px 0;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .error-box {
+      background-color: #fee2e2;
+      border: 1px solid #fca5a5;
+      color: #991b1b;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1em;
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-help-text {
+      display: block;
+      margin-top: 6px;
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    .form-section-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #333;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .image-section {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .image-input-group {
+      margin-bottom: 20px;
+    }
+
+    .image-url-input {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .image-url-input input {
+      flex: 1;
+    }
+
+    .image-url-input button {
+      padding: 12px 20px;
+      background-color: hsl(190, 77%, 33%);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    .image-url-input button:hover {
+      background-color: hsl(190, 77%, 28%);
+    }
+
+    .image-preview-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .image-preview {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f0f0f0;
+      aspect-ratio: 1;
+    }
+
+    .image-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-preview-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: #999;
+      font-size: 2em;
+    }
+
+    .image-remove-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #ef4444;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s;
+    }
+
+    .image-remove-btn:hover {
+      background-color: #dc2626;
+    }
+
+    .textarea-hint {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      color: #666;
+      margin-top: 8px;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 30px;
+      justify-content: flex-start;
+    }
+
+    .btn-submit {
+      background-color: hsl(190, 77%, 33%);
+      color: white;
+      padding: 14px 35px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(20, 184, 166, 0.3);
+    }
+
+    .btn-cancel {
+      background-color: #e5e7eb;
+      color: #333;
+      padding: 14px 35px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+
+    .btn-cancel:hover {
+      background-color: #d1d5db;
+    }
+
+    .required-mark {
+      color: #ef4444;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .image-preview-list {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <div class="form-container">
+    <a href="/admin/trips" class="back-link">← Back to Trips</a>
+    
+    <div class="form-header">
+      <h1><%= title %></h1>
+    </div>
+
+    <% if (error) { %>
+      <div class="error-box"><%= error %></div>
+    <% } %>
+
+    <form method="POST" enctype="multipart/form-data">
+      <!-- Basic Information -->
+      <div class="form-section-title">📋 Basic Information</div>
+
+      <div class="form-group">
+        <label>Trip Name <span class="required-mark">*</span></label>
+        <input type="text" name="name" value="<%= trip?.name || '' %>" required placeholder="e.g., Ladakh Adventure">
+      </div>
+
+      <div class="form-group">
+        <label>Description <span class="required-mark">*</span></label>
+        <textarea name="description" required placeholder="Write a detailed description of the trip..."><%= trip?.description || '' %></textarea>
+      </div>
+
+      <div class="two-column">
+        <div class="form-group">
+          <label>Price (₹) <span class="required-mark">*</span></label>
+          <input type="number" name="price" value="<%= trip?.price || '' %>" required min="0" placeholder="e.g., 45000">
+        </div>
+
+        <div class="form-group">
+          <label>Start Date <span class="required-mark">*</span></label>
+          <input type="date" name="date" value="<%= trip?.date ? trip.date.toISOString().split('T')[0] : '' %>" required>
+        </div>
+      </div>
+
+      <!-- Trip Details -->
+      <div class="form-section-title">🗺️ Trip Details</div>
+
+      <div class="two-column">
+        <div class="form-group">
+          <label>Region <span class="required-mark">*</span></label>
+          <input type="text" name="region" value="<%= trip?.details?.Region || '' %>" required placeholder="e.g., Himalayas">
+        </div>
+
+        <div class="form-group">
+          <label>Duration</label>
+          <input type="text" name="duration" value="<%= trip?.details?.Duration || '' %>" placeholder="e.g., 5 Days / 4 Nights">
+        </div>
+      </div>
+
+      <div class="two-column">
+        <div class="form-group">
+          <label>Difficulty Level</label>
+          <select name="difficulty">
+            <option value="">Select difficulty</option>
+            <option value="Easy" <% if (trip?.details?.Difficulty === 'Easy') { %>selected<% } %>>Easy</option>
+            <option value="Easy to Moderate" <% if (trip?.details?.Difficulty === 'Easy to Moderate') { %>selected<% } %>>Easy to Moderate</option>
+            <option value="Moderate" <% if (trip?.details?.Difficulty === 'Moderate') { %>selected<% } %>>Moderate</option>
+            <option value="Challenging" <% if (trip?.details?.Difficulty === 'Challenging') { %>selected<% } %>>Challenging</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Accommodation Type</label>
+          <input type="text" name="accommodation" value="<%= trip?.details?.Accommodation || '' %>" placeholder="e.g., Hotels, Homestays">
+        </div>
+      </div>
+
+      <!-- Location Information -->
+      <div class="form-section-title">📍 Location Information</div>
+
+      <div class="two-column">
+        <div class="form-group">
+          <label>Weather Location <span class="required-mark">*</span></label>
+          <input type="text" name="weatherLocation" value="<%= trip?.weatherLocation || '' %>" required placeholder="e.g., Leh, Kochi">
+          <span class="form-help-text">City name for weather API (used on trip details page)</span>
+        </div>
+
+        <div class="form-group">
+          <label>Map Location <span class="required-mark">*</span></label>
+          <input type="text" name="mapLocation" value="<%= trip?.mapLocation || '' %>" required placeholder="e.g., Leh, Ladakh">
+          <span class="form-help-text">Location for map embed</span>
+        </div>
+      </div>
+
+      <!-- Images Section -->
+      <div class="form-section-title">🖼️ Images</div>
+
+      <div class="image-section">
+        <div class="form-group">
+          <label>Primary Image (Upload File) <span style="color: #999;">(Recommended)</span></label>
+          <input type="file" name="primaryImage" accept="image/*" placeholder="Choose image file">
+          <span class="form-help-text">Upload a JPG, PNG, WebP, or GIF image (max 5MB)</span>
+        </div>
+
+        <div class="form-group">
+          <label style="color: #999; margin-top: 15px;">OR Enter Image URL</label>
+          <input type="text" name="image" value="<%= trip?.image || '' %>" placeholder="e.g., /images/ladakh.jpg">
+          <span class="form-help-text">Use this if you prefer to link an external image URL</span>
+        </div>
+
+        <div class="image-input-group">
+          <label>Additional Images <span style="color: #999;">(Optional)</span></label>
+          <div class="image-url-input">
+            <input type="text" id="additionalImageInput" placeholder="Enter image URL and press Add">
+            <button type="button" onclick="addImage()">+ Add Image</button>
+          </div>
+          <span class="form-help-text">Add multiple images that will be displayed in the gallery</span>
+        </div>
+
+        <div id="imagePreviewList" class="image-preview-list">
+          <% if (trip?.images && trip.images.length > 0) { %>
+            <% trip.images.forEach((img, idx) => { %>
+              <div class="image-preview" id="image-<%= idx %>">
+                <img src="<%= img %>" alt="trip image" onerror="this.style.display='none'">
+                <% if (!img.startsWith('http')) { %>
+                  <div class="image-preview-placeholder">📷</div>
+                <% } %>
+                <button type="button" class="image-remove-btn" onclick="removeImage('<%= idx %>')">×</button>
+              </div>
+            <% }); %>
+          <% } %>
+        </div>
+
+        <textarea id="imagesField" name="images" style="display: none;"><% if (trip?.images && trip.images.length > 0) { %><%= trip.images.join(', ') %><% } %></textarea>
+      </div>
+
+      <!-- Itinerary -->
+      <div class="form-section-title">📅 Itinerary</div>
+
+      <div class="form-group">
+        <label>Day-by-Day Itinerary</label>
+        <textarea name="itinerary" placeholder="Day 1: Arrival at Delhi, transfer to hotel&#10;Day 2: Sightseeing tour&#10;Day 3: ..."><% if (trip?.itinerary) { %><%= trip.itinerary.join('\n') %><% } %></textarea>
+        <span class="form-help-text">Enter each day on a new line</span>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">
+          <% if (trip) { %>💾 Update Trip<% } else { %>➕ Add Trip<% } %>
+        </button>
+        <a href="/admin/trips" class="btn-cancel">Cancel</a>
+      </div>
+    </form>
+  </div>
+
+  <%- include('partials/footer') %>
+
+  <script>
+    let imagesList = [];
+
+    // Load existing images on page load
+    function initImages() {
+      const imagesField = document.getElementById('imagesField');
+      if (imagesField && imagesField.value.trim()) {
+        imagesList = imagesField.value.split(',').map(img => img.trim()).filter(img => img);
+      }
+    }
+
+    function addImage() {
+      const input = document.getElementById('additionalImageInput');
+      const url = input.value.trim();
+
+      if (!url) {
+        alert('Please enter an image URL');
+        return;
+      }
+
+      if (imagesList.includes(url)) {
+        alert('This image is already added');
+        input.value = '';
+        return;
+      }
+
+      imagesList.push(url);
+      updateImagePreview();
+      input.value = '';
+      input.focus();
+    }
+
+    function removeImage(index) {
+      imagesList.splice(index, 1);
+      updateImagePreview();
+    }
+
+    function updateImagePreview() {
+      const previewList = document.getElementById('imagePreviewList');
+      const imagesField = document.getElementById('imagesField');
+
+      previewList.innerHTML = '';
+
+      imagesList.forEach((img, idx) => {
+        const div = document.createElement('div');
+        div.className = 'image-preview';
+        div.id = `image-${idx}`;
+
+        const img_elem = document.createElement('img');
+        img_elem.src = img;
+        img_elem.alt = 'trip image';
+        img_elem.onerror = function() { this.style.display = 'none'; };
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'image-remove-btn';
+        btn.innerHTML = '×';
+        btn.onclick = (e) => { e.preventDefault(); removeImage(idx); };
+
+        // Add placeholder if image URL is local
+        if (!img.startsWith('http')) {
+          const placeholder = document.createElement('div');
+          placeholder.className = 'image-preview-placeholder';
+          placeholder.innerHTML = '📷';
+          div.appendChild(placeholder);
+        }
+
+        div.appendChild(img_elem);
+        div.appendChild(btn);
+        previewList.appendChild(div);
+      });
+
+      imagesField.value = imagesList.join(', ');
+    }
+
+    // Allow Enter key to add image
+    document.getElementById('additionalImageInput')?.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        addImage();
+      }
+    });
+
+    // Initialize on page load
+    initImages();
+  </script>
+</body>
+</html>
